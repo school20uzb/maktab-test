@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MaktabTest — Online Test Platformasi</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0e1a;
+    --surface: #141828;
+    --card: #1a1f35;
+    --border: #252c48;
+    --accent: #4f8ef7;
+    --accent2: #a259ff;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+    --text: #e8eaf6;
+    --muted: #7b82a6;
+    --radius: 16px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Nunito',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+
+  /* NAV */
+  nav {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px; border-bottom:1px solid var(--border);
+    background:rgba(11,14,26,0.95); position:sticky; top:0; z-index:100;
+    backdrop-filter:blur(12px);
+  }
+  .logo { font-family:'Unbounded',sans-serif; font-size:1.2rem; font-weight:800;
+    background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .nav-tabs { display:flex; gap:8px; }
+  .nav-tab { padding:8px 18px; border-radius:24px; border:none; cursor:pointer; font-family:'Nunito',sans-serif;
+    font-size:0.88rem; font-weight:600; transition:all .2s; background:transparent; color:var(--muted); }
+  .nav-tab.active, .nav-tab:hover { background:var(--surface); color:var(--text); }
+
+  /* PAGES */
+  .page { display:none; padding:32px; max-width:960px; margin:0 auto; animation:fadeIn .3s ease; }
+  .page.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+  /* HOME */
+  .hero { text-align:center; padding:60px 0 40px; }
+  .hero h1 { font-family:'Unbounded',sans-serif; font-size:2.4rem; font-weight:800; line-height:1.2;
+    background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .hero p { margin-top:16px; color:var(--muted); font-size:1.05rem; max-width:500px; margin-left:auto; margin-right:auto; }
+  .hero-btns { display:flex; gap:12px; justify-content:center; margin-top:28px; flex-wrap:wrap; }
+  .btn { padding:12px 28px; border-radius:12px; border:none; font-family:'Nunito',sans-serif;
+    font-size:0.95rem; font-weight:700; cursor:pointer; transition:all .2s; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
+  .btn-primary { background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; }
+  .btn-primary:hover { opacity:.9; transform:translateY(-2px); }
+  .btn-outline { background:transparent; color:var(--accent); border:2px solid var(--accent); }
+  .btn-outline:hover { background:var(--accent); color:#fff; }
+  .btn-green { background:var(--green); color:#fff; }
+  .btn-green:hover { opacity:.85; transform:translateY(-2px); }
+  .btn-red { background:var(--red); color:#fff; }
+
+  .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:40px; }
+  .stat-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    padding:24px; text-align:center; }
+  .stat-num { font-family:'Unbounded',sans-serif; font-size:2rem; font-weight:800;
+    background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .stat-label { color:var(--muted); font-size:.85rem; margin-top:6px; }
+
+  /* CARDS GRID */
+  .section-title { font-family:'Unbounded',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:20px;
+    display:flex; align-items:center; gap:10px; }
+  .cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+  .test-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px; cursor:pointer; transition:all .2s; position:relative; overflow:hidden; }
+  .test-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2)); }
+  .test-card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:0 12px 32px rgba(79,142,247,.15); }
+  .test-card-subject { font-size:.78rem; font-weight:700; color:var(--accent); text-transform:uppercase;
+    letter-spacing:.08em; margin-bottom:8px; }
+  .test-card-title { font-size:1.05rem; font-weight:700; margin-bottom:10px; }
+  .test-card-meta { display:flex; gap:14px; color:var(--muted); font-size:.82rem; flex-wrap:wrap; }
+  .test-card-meta span { display:flex; align-items:center; gap:4px; }
+  .badge { display:inline-flex; align-items:center; padding:3px 10px; border-radius:20px; font-size:.75rem; font-weight:700; }
+  .badge-green { background:rgba(34,197,94,.15); color:var(--green); }
+  .badge-yellow { background:rgba(245,158,11,.15); color:var(--yellow); }
+  .badge-red { background:rgba(239,68,68,.15); color:var(--red); }
+  .badge-blue { background:rgba(79,142,247,.15); color:var(--accent); }
+
+  /* FORM */
+  .form-section { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:20px; }
+  .form-title { font-family:'Unbounded',sans-serif; font-size:1rem; font-weight:700; margin-bottom:20px; }
+  .form-group { margin-bottom:16px; }
+  label { display:block; font-size:.85rem; font-weight:600; color:var(--muted); margin-bottom:6px; }
+  input, select, textarea { width:100%; padding:12px 16px; background:var(--surface); border:1.5px solid var(--border);
+    border-radius:10px; color:var(--text); font-family:'Nunito',sans-serif; font-size:.95rem; transition:border .2s; outline:none; }
+  input:focus, select:focus, textarea:focus { border-color:var(--accent); }
+  textarea { resize:vertical; min-height:80px; }
+  select option { background:var(--surface); }
+
+  .question-block { background:var(--surface); border:1.5px solid var(--border); border-radius:12px; padding:20px; margin-bottom:14px; }
+  .question-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+  .question-num { font-family:'Unbounded',sans-serif; font-size:.85rem; font-weight:700; color:var(--accent); }
+  .options-list { display:grid; gap:8px; }
+  .option-row { display:flex; align-items:center; gap:10px; }
+  .option-row input[type=text] { flex:1; }
+  .correct-radio { width:20px; height:20px; accent-color:var(--green); cursor:pointer; flex-shrink:0; }
+  .correct-label { font-size:.78rem; color:var(--green); font-weight:700; white-space:nowrap; }
+
+  /* TEST TAKING */
+  .test-header { background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    padding:20px 24px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center; }
+  .timer { font-family:'Unbounded',sans-serif; font-size:1.4rem; font-weight:800; color:var(--accent); }
+  .timer.warning { color:var(--yellow); }
+  .timer.danger { color:var(--red); animation:pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+  .progress-bar { height:6px; background:var(--border); border-radius:3px; margin-top:12px; }
+  .progress-fill { height:100%; border-radius:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); transition:width .3s; }
+
+  .q-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:16px; }
+  .q-text { font-size:1.08rem; font-weight:600; margin-bottom:20px; line-height:1.6; }
+  .answer-options { display:grid; gap:10px; }
+  .answer-btn { padding:14px 18px; background:var(--surface); border:1.5px solid var(--border);
+    border-radius:12px; text-align:left; cursor:pointer; font-family:'Nunito',sans-serif;
+    font-size:.95rem; font-weight:600; color:var(--text); transition:all .2s; display:flex; align-items:center; gap:12px; }
+  .answer-btn:hover { border-color:var(--accent); background:rgba(79,142,247,.08); }
+  .answer-btn.selected { border-color:var(--accent); background:rgba(79,142,247,.12); color:var(--accent); }
+  .answer-btn.correct { border-color:var(--green); background:rgba(34,197,94,.12); color:var(--green); }
+  .answer-btn.wrong { border-color:var(--red); background:rgba(239,68,68,.12); color:var(--red); }
+  .answer-letter { width:32px; height:32px; border-radius:8px; background:var(--border); display:flex;
+    align-items:center; justify-content:center; font-weight:800; font-size:.85rem; flex-shrink:0; }
+
+  /* RESULTS */
+  .result-hero { text-align:center; padding:40px 20px; }
+  .score-circle { width:140px; height:140px; border-radius:50%; margin:0 auto 24px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    border:6px solid; font-family:'Unbounded',sans-serif; }
+  .score-num { font-size:2.2rem; font-weight:800; }
+  .score-sub { font-size:.75rem; font-weight:600; opacity:.7; }
+
+  .result-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:24px 0; }
+  .result-stat { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; text-align:center; }
+  .result-stat-val { font-family:'Unbounded',sans-serif; font-size:1.6rem; font-weight:800; }
+  .result-stat-label { font-size:.8rem; color:var(--muted); margin-top:4px; }
+
+  /* UTILITY */
+  .flex { display:flex; }
+  .gap-8 { gap:8px; }
+  .mt-16 { margin-top:16px; }
+  .mt-24 { margin-top:24px; }
+  .text-muted { color:var(--muted); font-size:.88rem; }
+  .icon { font-size:1.1rem; }
+
+  @media(max-width:600px) {
+    nav { padding:14px 16px; }
+    .page { padding:16px; }
+    .hero h1 { font-size:1.6rem; }
+    .stats-row, .result-grid { grid-template-columns:1fr 1fr; }
+    .nav-tab { padding:6px 12px; font-size:.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">📚 MaktabTest</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('home')">🏠 Bosh sahifa</button>
+    <button class="nav-tab" onclick="showPage('create')">➕ Test yaratish</button>
+    <button class="nav-tab" onclick="showPage('tests')">📋 Testlar</button>
+    <button class="nav-tab" onclick="showPage('results')">📊 Natijalar</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <h1>Online Test Platformasi</h1>
+    <p>O'qituvchilar test yaratsin, o'quvchilar ishlashsin — hamma natija bir joyda!</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary" onclick="showPage('create')">➕ Test Yaratish</button>
+      <button class="btn btn-outline" onclick="showPage('tests')">📋 Testlarni Ko'rish</button>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num" id="stat-tests">0</div>
+      <div class="stat-label">Jami testlar</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-attempts">0</div>
+      <div class="stat-label">Urinishlar soni</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-avg">—</div>
+      <div class="stat-label">O'rtacha ball</div>
+    </div>
+  </div>
+
+  <div class="mt-24">
+    <div class="section-title">🔥 So'nggi testlar</div>
+    <div class="cards-grid" id="home-recent"></div>
+  </div>
+</div>
+
+<!-- CREATE TEST -->
+<div class="page" id="page-create">
+  <div class="form-section">
+    <div class="form-title">📝 Test ma'lumotlari</div>
+    <div class="form-group">
+      <label>Test nomi *</label>
+      <input type="text" id="test-title" placeholder="Masalan: 5-sinf Matematika — Kasrlar" />
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+      <div class="form-group">
+        <label>Fan *</label>
+        <select id="test-subject">
+          <option value="Matematika">Matematika</option>
+          <option value="Ona tili">Ona tili</option>
+          <option value="Ingliz tili">Ingliz tili</option>
+          <option value="Tarix">Tarix</option>
+          <option value="Fizika">Fizika</option>
+          <option value="Kimyo">Kimyo</option>
+          <option value="Biologiya">Biologiya</option>
+          <option value="Geografiya">Geografiya</option>
+          <option value="Informatika">Informatika</option>
+          <option value="Boshqa">Boshqa</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Sinf</label>
+        <select id="test-class">
+          <option value="1-sinf">1-sinf</option>
+          <option value="2-sinf">2-sinf</option>
+          <option value="3-sinf">3-sinf</option>
+          <option value="4-sinf">4-sinf</option>
+          <option value="5-sinf">5-sinf</option>
+          <option value="6-sinf">6-sinf</option>
+          <option value="7-sinf">7-sinf</option>
+          <option value="8-sinf">8-sinf</option>
+          <option value="9-sinf">9-sinf</option>
+          <option value="10-sinf">10-sinf</option>
+          <option value="11-sinf">11-sinf</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+      <div class="form-group">
+        <label>Vaqt chegarasi (daqiqa)</label>
+        <input type="number" id="test-time" value="30" min="1" max="180" />
+      </div>
+      <div class="form-group">
+        <label>O'tish bali (%)</label>
+        <input type="number" id="test-pass" value="60" min="1" max="100" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Qo'shimcha izoh</label>
+      <textarea id="test-desc" placeholder="Test haqida qisqacha ma'lumot..."></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-title">❓ Savollar</div>
+    <div id="questions-container"></div>
+    <button class="btn btn-outline mt-16" onclick="addQuestion()">+ Savol qo'shish</button>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <button class="btn btn-primary" onclick="saveTest()">💾 Testni saqlash</button>
+    <button class="btn btn-outline" onclick="clearForm()">🗑️ Tozalash</button>
+  </div>
+</div>
+
+<!-- TESTS LIST -->
+<div class="page" id="page-tests">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+    <div class="section-title" style="margin:0">📋 Barcha testlar</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <select id="filter-subject" onchange="renderTests()" style="width:auto; padding:8px 14px;">
+        <option value="">Barcha fanlar</option>
+      </select>
+      <select id="filter-class" onchange="renderTests()" style="width:auto; padding:8px 14px;">
+        <option value="">Barcha sinflar</option>
+        <option value="1-sinf">1-sinf</option>
+        <option value="2-sinf">2-sinf</option>
+        <option value="3-sinf">3-sinf</option>
+        <option value="4-sinf">4-sinf</option>
+        <option value="5-sinf">5-sinf</option>
+        <option value="6-sinf">6-sinf</option>
+        <option value="7-sinf">7-sinf</option>
+        <option value="8-sinf">8-sinf</option>
+        <option value="9-sinf">9-sinf</option>
+        <option value="10-sinf">10-sinf</option>
+        <option value="11-sinf">11-sinf</option>
+      </select>
+    </div>
+  </div>
+  <div class="cards-grid" id="tests-grid"></div>
+  <div id="no-tests" style="display:none; text-align:center; padding:60px 20px; color:var(--muted);">
+    <div style="font-size:3rem; margin-bottom:16px;">📭</div>
+    <div>Hali test yaratilmagan</div>
+    <button class="btn btn-primary mt-16" onclick="showPage('create')">➕ Birinchi testni yarating</button>
+  </div>
+</div>
+
+<!-- TAKE TEST -->
+<div class="page" id="page-take">
+  <div class="test-header">
+    <div>
+      <div id="take-title" style="font-weight:700; font-size:1.05rem;"></div>
+      <div id="take-meta" class="text-muted mt-16" style="margin-top:4px;"></div>
+    </div>
+    <div>
+      <div class="timer" id="timer-display">00:00</div>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="take-progress" style="width:0%"></div></div>
+
+  <div id="take-name-section" class="form-section mt-16" style="margin-top:16px;">
+    <div class="form-title">👤 Ismingizni kiriting</div>
+    <div class="form-group">
+      <label>To'liq ism</label>
+      <input type="text" id="student-name" placeholder="Masalan: Aziz Karimov" />
+    </div>
+    <button class="btn btn-primary" onclick="startTest()">▶️ Testni boshlash</button>
+  </div>
+
+  <div id="take-questions" style="display:none;"></div>
+  <div id="take-nav" style="display:none; margin-top:16px; display:none; gap:12px; flex-wrap:wrap;">
+    <button class="btn btn-primary" id="btn-finish" onclick="finishTest()" style="display:none;">✅ Testni yakunlash</button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="page" id="page-results">
+  <div class="section-title">📊 Natijalar jadvali</div>
+  <div id="results-list"></div>
+  <div id="no-results" style="display:none; text-align:center; padding:60px; color:var(--muted);">
+    <div style="font-size:3rem; margin-bottom:12px;">📊</div>
+    <div>Hali natija yo'q</div>
+  </div>
+</div>
+
+<!-- RESULT PAGE -->
+<div class="page" id="page-result">
+  <div class="result-hero">
+    <div class="score-circle" id="result-circle">
+      <div class="score-num" id="result-score"></div>
+      <div class="score-sub">BALL</div>
+    </div>
+    <h2 id="result-status" style="font-family:'Unbounded',sans-serif; font-size:1.4rem; margin-bottom:8px;"></h2>
+    <p id="result-msg" class="text-muted"></p>
+  </div>
+  <div class="result-grid">
+    <div class="result-stat">
+      <div class="result-stat-val" id="res-correct" style="color:var(--green);"></div>
+      <div class="result-stat-label">✅ To'g'ri</div>
+    </div>
+    <div class="result-stat">
+      <div class="result-stat-val" id="res-wrong" style="color:var(--red);"></div>
+      <div class="result-stat-label">❌ Noto'g'ri</div>
+    </div>
+    <div class="result-stat">
+      <div class="result-stat-val" id="res-time" style="color:var(--accent);"></div>
+      <div class="result-stat-label">⏱ Vaqt sarflandi</div>
+    </div>
+  </div>
+
+  <div id="review-section">
+    <div class="section-title">🔍 Savol tahlili</div>
+    <div id="review-questions"></div>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:24px;">
+    <button class="btn btn-primary" onclick="showPage('tests')">📋 Boshqa testlar</button>
+    <button class="btn btn-outline" onclick="showPage('results')">📊 Natijalar</button>
+  </div>
+</div>
+
+<script>
+// STATE
+let tests = JSON.parse(localStorage.getItem('maktab_tests') || '[]');
+let results = JSON.parse(localStorage.getItem('maktab_results') || '[]');
+let qCount = 0;
+let currentTest = null;
+let userAnswers = {};
+let timerInterval = null;
+let startTime = null;
+let timeLeft = 0;
+let testStarted = false;
+
+// INIT
+addQuestion(); addQuestion(); addQuestion();
+updateStats();
+renderHome();
+renderTests();
+renderResults();
+
+function save() {
+  localStorage.setItem('maktab_tests', JSON.stringify(tests));
+  localStorage.setItem('maktab_results', JSON.stringify(results));
+}
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const tabs = document.querySelectorAll('.nav-tab');
+  const idx = ['home','create','tests','results'].indexOf(id);
+  if (idx >= 0) tabs[idx].classList.add('active');
+  if (id === 'tests') { renderTests(); updateFilterOptions(); }
+  if (id === 'results') renderResults();
+  if (id === 'home') { updateStats(); renderHome(); }
+}
+
+function updateStats() {
+  document.getElementById('stat-tests').textContent = tests.length;
+  document.getElementById('stat-attempts').textContent = results.length;
+  if (results.length) {
+    const avg = Math.round(results.reduce((s,r) => s + r.score, 0) / results.length);
+    document.getElementById('stat-avg').textContent = avg + '%';
+  }
+}
+
+function renderHome() {
+  const el = document.getElementById('home-recent');
+  const recent = [...tests].reverse().slice(0, 6);
+  if (!recent.length) { el.innerHTML = '<p class="text-muted">Hali test yaratilmagan</p>'; return; }
+  el.innerHTML = recent.map(t => testCardHTML(t)).join('');
+}
+
+function updateFilterOptions() {
+  const sel = document.getElementById('filter-subject');
+  const current = sel.value;
+  const subjects = [...new Set(tests.map(t => t.subject))];
+  sel.innerHTML = '<option value="">Barcha fanlar</option>' + subjects.map(s => `<option value="${s}" ${s===current?'selected':''}>${s}</option>`).join('');
+}
+
+function renderTests() {
+  const grid = document.getElementById('tests-grid');
+  const none = document.getElementById('no-tests');
+  const subj = document.getElementById('filter-subject')?.value || '';
+  const cls = document.getElementById('filter-class')?.value || '';
+  let filtered = tests.filter(t =>
+    (!subj || t.subject === subj) &&
+    (!cls || t.class === cls)
+  ).reverse();
+  if (!filtered.length) { grid.innerHTML = ''; none.style.display = 'block'; return; }
+  none.style.display = 'none';
+  grid.innerHTML = filtered.map(t => testCardHTML(t)).join('');
+}
+
+function testCardHTML(t) {
+  const attempts = results.filter(r => r.testId === t.id).length;
+  return `<div class="test-card" onclick="openTest('${t.id}')">
+    <div class="test-card-subject">${t.subject} · ${t.class}</div>
+    <div class="test-card-title">${t.title}</div>
+    <div class="test-card-meta">
+      <span>❓ ${t.questions.length} savol</span>
+      <span>⏱ ${t.time} daqiqa</span>
+      <span>👥 ${attempts} urinish</span>
+    </div>
+    <div style="margin-top:12px; display:flex; gap:8px; align-items:center;">
+      <span class="badge badge-blue">▶️ Ishlash</span>
+      <button onclick="event.stopPropagation(); deleteTest('${t.id}')" style="background:transparent; border:none; cursor:pointer; color:var(--muted); font-size:.8rem;">🗑️</button>
+    </div>
+  </div>`;
+}
+
+function addQuestion() {
+  qCount++;
+  const id = 'q' + Date.now() + qCount;
+  const div = document.createElement('div');
+  div.className = 'question-block';
+  div.id = id;
+  div.innerHTML = `
+    <div class="question-header">
+      <div class="question-num">Savol ${document.querySelectorAll('.question-block').length + 1}</div>
+      <button onclick="removeQuestion('${id}')" style="background:var(--red);color:#fff;border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:.82rem;">✕ O'chirish</button>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Savol matni..." class="q-text-input" />
+    </div>
+    <div class="options-list">
+      ${['A','B','C','D'].map((l,i) => `
+        <div class="option-row">
+          <span style="color:var(--accent);font-weight:800;width:20px;">${l}</span>
+          <input type="text" placeholder="${l} variant..." class="opt-input" data-opt="${i}" />
+          <input type="radio" name="correct-${id}" class="correct-radio" value="${i}" title="To'g'ri javob" />
+          <span class="correct-label">✓</span>
+        </div>`).join('')}
+    </div>`;
+  document.getElementById('questions-container').appendChild(div);
+  renumberQuestions();
+}
+
+function removeQuestion(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+  renumberQuestions();
+}
+
+function renumberQuestions() {
+  document.querySelectorAll('.question-block').forEach((b, i) => {
+    b.querySelector('.question-num').textContent = `Savol ${i + 1}`;
+  });
+}
+
+function saveTest() {
+  const title = document.getElementById('test-title').value.trim();
+  if (!title) { alert('Test nomini kiriting!'); return; }
+  const blocks = document.querySelectorAll('.question-block');
+  if (!blocks.length) { alert('Kamida 1 ta savol kiriting!'); return; }
+
+  const questions = [];
+  let valid = true;
+  blocks.forEach((b, i) => {
+    const text = b.querySelector('.q-text-input').value.trim();
+    const opts = [...b.querySelectorAll('.opt-input')].map(o => o.value.trim());
+    const correct = b.querySelector('.correct-radio:checked');
+    if (!text || opts.some(o => !o) || !correct) {
+      alert(`Savol ${i+1}: barcha maydonlarni to'ldiring va to'g'ri javobni belgilang!`);
+      valid = false;
+    } else {
+      questions.push({ text, options: opts, correct: parseInt(correct.value) });
+    }
+  });
+  if (!valid) return;
+
+  const test = {
+    id: 'test_' + Date.now(),
+    title,
+    subject: document.getElementById('test-subject').value,
+    class: document.getElementById('test-class').value,
+    time: parseInt(document.getElementById('test-time').value),
+    pass: parseInt(document.getElementById('test-pass').value),
+    desc: document.getElementById('test-desc').value.trim(),
+    questions,
+    created: new Date().toLocaleDateString('uz-UZ')
+  };
+  tests.push(test);
+  save();
+  alert('✅ Test muvaffaqiyatli saqlandi!');
+  clearForm();
+  showPage('tests');
+}
+
+function clearForm() {
+  document.getElementById('test-title').value = '';
+  document.getElementById('test-desc').value = '';
+  document.getElementById('test-time').value = '30';
+  document.getElementById('test-pass').value = '60';
+  document.getElementById('questions-container').innerHTML = '';
+  qCount = 0;
+  addQuestion(); addQuestion(); addQuestion();
+}
+
+function deleteTest(id) {
+  if (!confirm('Bu testni o\'chirishni tasdiqlaysizmi?')) return;
+  tests = tests.filter(t => t.id !== id);
+  save();
+  renderTests();
+  updateStats();
+}
+
+function openTest(id) {
+  currentTest = tests.find(t => t.id === id);
+  if (!currentTest) return;
+  userAnswers = {};
+  testStarted = false;
+  if (timerInterval) clearInterval(timerInterval);
+  document.getElementById('take-title').textContent = currentTest.title;
+  document.getElementById('take-meta').textContent = `${currentTest.subject} · ${currentTest.class} · ${currentTest.questions.length} savol · ${currentTest.time} daqiqa`;
+  document.getElementById('take-progress').style.width = '0%';
+  document.getElementById('take-name-section').style.display = 'block';
+  document.getElementById('take-questions').style.display = 'none';
+  document.getElementById('btn-finish').style.display = 'none';
+  document.getElementById('student-name').value = '';
+  document.getElementById('timer-display').textContent = formatTime(currentTest.time * 60);
+  document.getElementById('timer-display').className = 'timer';
+  showPage('take');
+}
+
+function startTest() {
+  const name = document.getElementById('student-name').value.trim();
+  if (!name) { alert('Ismingizni kiriting!'); return; }
+  testStarted = true;
+  document.getElementById('take-name-section').style.display = 'none';
+  document.getElementById('take-questions').style.display = 'block';
+  document.getElementById('btn-finish').style.display = 'inline-flex';
+  document.getElementById('take-nav').style.display = 'flex';
+  renderTakeQuestions();
+  startTime = Date.now();
+  timeLeft = currentTest.time * 60;
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    document.getElementById('timer-display').textContent = formatTime(timeLeft);
+    const el = document.getElementById('timer-display');
+    if (timeLeft <= 60) el.className = 'timer danger';
+    else if (timeLeft <= currentTest.time * 60 * 0.25) el.className = 'timer warning';
+    if (timeLeft <= 0) { clearInterval(timerInterval); finishTest(); }
+  }, 1000);
+}
+
+function formatTime(s) {
+  const m = Math.floor(s / 60);
+  return `${String(m).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+}
+
+function renderTakeQuestions() {
+  const cont = document.getElementById('take-questions');
+  cont.innerHTML = currentTest.questions.map((q, qi) => `
+    <div class="q-card" id="qcard-${qi}">
+      <div class="q-text">${qi+1}. ${q.text}</div>
+      <div class="answer-options">
+        ${q.options.map((o,oi) => `
+          <button class="answer-btn" id="opt-${qi}-${oi}" onclick="selectAnswer(${qi},${oi})">
+            <div class="answer-letter">${'ABCD'[oi]}</div>
+            <span>${o}</span>
+          </button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function selectAnswer(qi, oi) {
+  userAnswers[qi] = oi;
+  const q = currentTest.questions[qi];
+  q.options.forEach((_,i) => {
+    const btn = document.getElementById(`opt-${qi}-${i}`);
+    btn.className = 'answer-btn' + (i === oi ? ' selected' : '');
+  });
+  updateProgress();
+}
+
+function updateProgress() {
+  const answered = Object.keys(userAnswers).length;
+  const pct = (answered / currentTest.questions.length) * 100;
+  document.getElementById('take-progress').style.width = pct + '%';
+}
+
+function finishTest() {
+  if (timerInterval) clearInterval(timerInterval);
+  const elapsed = Math.round((Date.now() - startTime) / 1000);
+  const name = document.getElementById('student-name').value.trim() || 'Noma\'lum';
+  let correct = 0;
+  currentTest.questions.forEach((q, i) => { if (userAnswers[i] === q.correct) correct++; });
+  const score = Math.round((correct / currentTest.questions.length) * 100);
+  const passed = score >= currentTest.pass;
+
+  const result = {
+    id: 'r_' + Date.now(),
+    testId: currentTest.id,
+    testTitle: currentTest.title,
+    subject: currentTest.subject,
+    studentName: name,
+    score, correct,
+    wrong: currentTest.questions.length - correct,
+    total: currentTest.questions.length,
+    time: elapsed,
+    passed,
+    date: new Date().toLocaleString('uz-UZ'),
+    answers: { ...userAnswers }
+  };
+  results.push(result);
+  save();
+  showResultPage(result);
+}
+
+function showResultPage(r) {
+  const circle = document.getElementById('result-circle');
+  circle.style.borderColor = r.passed ? 'var(--green)' : r.score >= 40 ? 'var(--yellow)' : 'var(--red)';
+  document.getElementById('result-score').textContent = r.score + '%';
+  document.getElementById('result-score').style.color = r.passed ? 'var(--green)' : r.score >= 40 ? 'var(--yellow)' : 'var(--red)';
+  document.getElementById('result-status').textContent = r.passed ? '🎉 O\'tdingiz!' : '😔 O\'tolmadingiz';
+  document.getElementById('result-msg').textContent = `${r.studentName} · ${r.testTitle}`;
+  document.getElementById('res-correct').textContent = r.correct;
+  document.getElementById('res-wrong').textContent = r.wrong;
+  document.getElementById('res-time').textContent = formatTime(r.time);
+
+  const rev = document.getElementById('review-questions');
+  rev.innerHTML = currentTest.questions.map((q, i) => {
+    const ua = r.answers[i];
+    const isCorrect = ua === q.correct;
+    return `<div class="q-card" style="margin-bottom:12px;">
+      <div class="q-text">${i+1}. ${q.text}</div>
+      <div class="answer-options">
+        ${q.options.map((o,oi) => {
+          let cls = 'answer-btn';
+          if (oi === q.correct) cls += ' correct';
+          else if (oi === ua && !isCorrect) cls += ' wrong';
+          return `<div class="${cls}" style="pointer-events:none;">
+            <div class="answer-letter">${'ABCD'[oi]}</div>
+            <span>${o}</span>
+            ${oi === q.correct ? '<span style="margin-left:auto;font-size:.8rem;">✅ To\'g\'ri</span>' : ''}
+            ${oi === ua && !isCorrect ? '<span style="margin-left:auto;font-size:.8rem;">❌ Siz</span>' : ''}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }).join('');
+
+  showPage('result');
+}
+
+function renderResults() {
+  const el = document.getElementById('results-list');
+  const none = document.getElementById('no-results');
+  if (!results.length) { el.innerHTML = ''; none.style.display = 'block'; return; }
+  none.style.display = 'none';
+  const sorted = [...results].reverse();
+  el.innerHTML = `<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:.9rem;">
+    <thead>
+      <tr style="border-bottom:1px solid var(--border); color:var(--muted);">
+        <th style="text-align:left;padding:12px 8px;">O'quvchi</th>
+        <th style="text-align:left;padding:12px 8px;">Test</th>
+        <th style="text-align:center;padding:12px 8px;">Ball</th>
+        <th style="text-align:center;padding:12px 8px;">To'g'ri</th>
+        <th style="text-align:center;padding:12px 8px;">Natija</th>
+        <th style="text-align:left;padding:12px 8px;">Sana</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${sorted.map(r => `<tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:12px 8px;font-weight:600;">${r.studentName}</td>
+        <td style="padding:12px 8px;color:var(--muted);">${r.testTitle}<br><span style="font-size:.78rem;">${r.subject}</span></td>
+        <td style="text-align:center;padding:12px 8px;font-family:'Unbounded',sans-serif;font-weight:700;color:${r.passed?'var(--green)':r.score>=40?'var(--yellow)':'var(--red)'};">${r.score}%</td>
+        <td style="text-align:center;padding:12px 8px;">${r.correct}/${r.total}</td>
+        <td style="text-align:center;padding:12px 8px;"><span class="badge ${r.passed?'badge-green':'badge-red'}">${r.passed?'O\'tdi':'O\'tolmadi'}</span></td>
+        <td style="padding:12px 8px;color:var(--muted);font-size:.82rem;">${r.date}</td>
+      </tr>`).join('')}
+    </tbody>
+  </table></div>
+  <div style="margin-top:16px; display:flex; justify-content:flex-end;">
+    <button class="btn btn-red" onclick="clearResults()">🗑️ Natijalarni tozalash</button>
+  </div>`;
+}
+
+function clearResults() {
+  if (!confirm('Barcha natijalarni o\'chirishni tasdiqlaysizmi?')) return;
+  results = [];
+  save();
+  renderResults();
+  updateStats();
+}
+</script>
+</body>
+</html>
