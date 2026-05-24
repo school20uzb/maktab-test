@@ -14,121 +14,112 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 2
 .nav-tabs{display:flex;gap:6px;flex-wrap:wrap}
 .nav-tab{padding:7px 14px;border-radius:20px;border:none;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:700;transition:all .2s;background:transparent;color:var(--muted)}
 .nav-tab.active,.nav-tab:hover{background:var(--surface);color:var(--text)}
-.page{display:none;padding:24px;max-width:960px;margin:0 auto;animation:fadeIn .3s ease}
+.page{display:none;padding:24px;max-width:980px;margin:0 auto;animation:fadeIn .3s ease}
 .page.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* LOGIN */
-.login-wrap{min-height:80vh;display:flex;align-items:center;justify-content:center}
-.login-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px;width:100%;max-width:400px;text-align:center}
-.login-box h2{font-family:'Unbounded',sans-serif;font-size:1.2rem;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.lock-icon{font-size:3rem;margin-bottom:16px}
+.hero{text-align:center;padding:40px 0 28px}
+.hero h1{font-family:'Unbounded',sans-serif;font-size:1.9rem;font-weight:800;line-height:1.2;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{margin-top:10px;color:var(--muted);font-size:.95rem;max-width:480px;margin-left:auto;margin-right:auto}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;text-align:center}
+.stat-num{font-family:'Unbounded',sans-serif;font-size:1.7rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{color:var(--muted);font-size:.78rem;margin-top:4px}
 
-/* HERO */
-.hero{text-align:center;padding:40px 0 30px}
-.hero h1{font-family:'Unbounded',sans-serif;font-size:2rem;font-weight:800;line-height:1.2;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{margin-top:12px;color:var(--muted);font-size:1rem;max-width:500px;margin-left:auto;margin-right:auto}
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center}
-.stat-num{font-family:'Unbounded',sans-serif;font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.stat-label{color:var(--muted);font-size:.8rem;margin-top:4px}
-
-/* CARDS */
 .section-title{font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;margin-bottom:16px}
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
 .test-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
 .test-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
 .test-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 28px rgba(79,142,247,.12)}
-.test-card-subject{font-size:.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
-.test-card-title{font-size:1rem;font-weight:700;margin-bottom:8px}
-.test-card-img{width:100%;height:120px;object-fit:cover;border-radius:10px;margin-bottom:10px}
-.test-card-meta{display:flex;gap:12px;color:var(--muted);font-size:.8rem;flex-wrap:wrap}
-.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:700}
+.test-card-img{width:100%;height:110px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+.test-card-subject{font-size:.73rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
+.test-card-title{font-size:.98rem;font-weight:700;margin-bottom:8px}
+.test-card-meta{display:flex;gap:10px;color:var(--muted);font-size:.78rem;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:.73rem;font-weight:700}
 .badge-green{background:rgba(34,197,94,.15);color:var(--green)}
 .badge-blue{background:rgba(79,142,247,.15);color:var(--accent)}
 .badge-red{background:rgba(239,68,68,.15);color:var(--red)}
+.badge-yellow{background:rgba(245,158,11,.15);color:var(--yellow)}
 
-/* FORM */
-.form-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px}
-.form-title{font-family:'Unbounded',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:16px}
-.form-group{margin-bottom:14px}
-label{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin-bottom:5px}
-input,select,textarea{width:100%;padding:11px 14px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'Nunito',sans-serif;font-size:.9rem;transition:border .2s;outline:none}
+.form-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:14px}
+.form-title{font-family:'Unbounded',sans-serif;font-size:.92rem;font-weight:700;margin-bottom:14px}
+.form-group{margin-bottom:12px}
+label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:4px}
+input,select,textarea{width:100%;padding:10px 13px;background:var(--surface);border:1.5px solid var(--border);border-radius:9px;color:var(--text);font-family:'Nunito',sans-serif;font-size:.88rem;transition:border .2s;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--accent)}
-textarea{resize:vertical;min-height:70px}
+textarea{resize:vertical;min-height:65px}
 select option{background:var(--surface)}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 
-/* QUESTION BLOCK */
-.question-block{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:18px;margin-bottom:12px}
-.question-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.question-num{font-family:'Unbounded',sans-serif;font-size:.82rem;font-weight:700;color:var(--accent)}
-.img-preview{width:100%;max-height:160px;object-fit:cover;border-radius:8px;margin-bottom:10px;display:none}
-.options-list{display:grid;gap:7px}
-.option-row{display:flex;align-items:center;gap:8px}
+.question-block{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px;margin-bottom:10px}
+.question-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.question-num{font-family:'Unbounded',sans-serif;font-size:.8rem;font-weight:700;color:var(--accent)}
+.q-ball-badge{background:rgba(79,142,247,.15);color:var(--accent);padding:2px 10px;border-radius:12px;font-size:.75rem;font-weight:700}
+.options-list{display:grid;gap:7px;margin-top:10px}
+.option-row{display:flex;align-items:center;gap:7px}
 .option-row input[type=text]{flex:1}
-.option-img-btn{background:var(--border);border:none;border-radius:6px;padding:6px 10px;cursor:pointer;color:var(--text);font-size:.8rem;white-space:nowrap}
-.correct-radio{width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0}
-.correct-label{font-size:.75rem;color:var(--green);font-weight:700;white-space:nowrap}
-.opt-img-preview{width:40px;height:40px;object-fit:cover;border-radius:6px;display:none}
+.option-img-btn{background:var(--border);border:none;border-radius:6px;padding:5px 9px;cursor:pointer;color:var(--text);font-size:.78rem;white-space:nowrap;flex-shrink:0}
+.correct-radio{width:17px;height:17px;accent-color:var(--green);cursor:pointer;flex-shrink:0}
+.correct-label{font-size:.72rem;color:var(--green);font-weight:700;white-space:nowrap}
+.opt-img-preview{width:36px;height:36px;object-fit:cover;border-radius:5px;display:none;flex-shrink:0}
+.img-preview{width:100%;max-height:140px;object-fit:cover;border-radius:8px;margin:8px 0;display:none}
 
-/* BTNS */
-.btn{padding:11px 24px;border-radius:10px;border:none;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
+.btn{padding:10px 22px;border-radius:10px;border:none;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
 .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
 .btn-primary:hover{opacity:.9;transform:translateY(-1px)}
 .btn-outline{background:transparent;color:var(--accent);border:2px solid var(--accent)}
 .btn-outline:hover{background:var(--accent);color:#fff}
 .btn-red{background:var(--red);color:#fff}
-.btn-sm{padding:6px 14px;font-size:.8rem}
+.btn-sm{padding:5px 13px;font-size:.78rem}
+
+/* LOGIN */
+.login-wrap{min-height:75vh;display:flex;align-items:center;justify-content:center}
+.login-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:36px;width:100%;max-width:380px;text-align:center}
+.login-box h2{font-family:'Unbounded',sans-serif;font-size:1.1rem;margin-bottom:6px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
 /* TEST TAKING */
-.test-header{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.test-header{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .timer{font-family:'Unbounded',sans-serif;font-size:1.3rem;font-weight:800;color:var(--accent)}
 .timer.warning{color:var(--yellow)}
 .timer.danger{color:var(--red);animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-.progress-bar{height:5px;background:var(--border);border-radius:3px;margin-top:10px}
+.progress-bar{height:5px;background:var(--border);border-radius:3px}
 .progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s}
-.q-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:14px}
-.q-img{width:100%;max-height:220px;object-fit:contain;border-radius:10px;margin-bottom:14px}
-.q-text{font-size:1.05rem;font-weight:600;margin-bottom:16px;line-height:1.6}
-.answer-options{display:grid;gap:9px}
-.answer-btn{padding:13px 16px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;text-align:left;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:600;color:var(--text);transition:all .2s;display:flex;align-items:center;gap:10px}
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:12px}
+.q-img{width:100%;max-height:200px;object-fit:contain;border-radius:9px;margin-bottom:12px}
+.q-text{font-size:1.02rem;font-weight:600;margin-bottom:14px;line-height:1.6}
+.q-ball-info{font-size:.78rem;color:var(--accent);font-weight:700;margin-bottom:10px}
+.answer-options{display:grid;gap:8px}
+.answer-btn{padding:12px 15px;background:var(--surface);border:1.5px solid var(--border);border-radius:9px;text-align:left;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:600;color:var(--text);transition:all .2s;display:flex;align-items:center;gap:9px;width:100%}
 .answer-btn:hover{border-color:var(--accent);background:rgba(79,142,247,.08)}
 .answer-btn.selected{border-color:var(--accent);background:rgba(79,142,247,.12);color:var(--accent)}
-.answer-letter{width:30px;height:30px;border-radius:7px;background:var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.82rem;flex-shrink:0}
-.opt-img{width:50px;height:50px;object-fit:cover;border-radius:6px;margin-left:auto}
+.answer-letter{width:28px;height:28px;border-radius:7px;background:var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0}
+.opt-img-show{width:48px;height:48px;object-fit:cover;border-radius:6px;margin-left:auto;flex-shrink:0}
 
-/* RESULTS */
-.result-hero{text-align:center;padding:32px 16px}
-.score-circle{width:130px;height:130px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:6px solid;font-family:'Unbounded',sans-serif}
-.score-num{font-size:2rem;font-weight:800}
-.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-.result-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
-.result-stat-val{font-family:'Unbounded',sans-serif;font-size:1.5rem;font-weight:800}
-.result-stat-label{font-size:.78rem;color:var(--muted);margin-top:3px}
+/* RESULT */
+.result-hero{text-align:center;padding:30px 16px}
+.score-circle{width:130px;height:130px;border-radius:50%;margin:0 auto 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:6px solid;font-family:'Unbounded',sans-serif}
+.score-num{font-size:1.9rem;font-weight:800}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.result-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+.result-stat-val{font-family:'Unbounded',sans-serif;font-size:1.4rem;font-weight:800}
+.result-stat-label{font-size:.76rem;color:var(--muted);margin-top:3px}
 
-/* TABLE */
-table{width:100%;border-collapse:collapse;font-size:.88rem}
-th{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border);color:var(--muted);font-weight:700}
-td{padding:10px 8px;border-bottom:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{text-align:left;padding:9px 8px;border-bottom:1px solid var(--border);color:var(--muted);font-weight:700}
+td{padding:9px 8px;border-bottom:1px solid var(--border)}
 
-/* UTIL */
-.mt-16{margin-top:16px}
-.mt-20{margin-top:20px}
-.flex{display:flex}
-.gap-10{gap:10px}
-.text-muted{color:var(--muted);font-size:.85rem}
-.admin-badge{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:700}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.info-card h3{font-family:'Unbounded',sans-serif;font-size:.85rem;color:var(--accent);margin-bottom:10px}
+.score-table{width:100%;border-collapse:collapse;font-size:.83rem}
+.score-table th{background:var(--surface);padding:7px 10px;text-align:left;border:1px solid var(--border)}
+.score-table td{padding:7px 10px;border:1px solid var(--border)}
 
-/* BSB INFO */
-.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px}
-.info-card h3{font-family:'Unbounded',sans-serif;font-size:.9rem;color:var(--accent);margin-bottom:12px}
-.score-table{width:100%;border-collapse:collapse;font-size:.85rem}
-.score-table th{background:var(--surface);padding:8px 12px;text-align:left;border:1px solid var(--border)}
-.score-table td{padding:8px 12px;border:1px solid var(--border)}
-
-@media(max-width:600px){nav{padding:12px 14px}.page{padding:14px}.hero h1{font-size:1.4rem}.stats-row,.result-grid{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}}
+.mt-16{margin-top:16px}.mt-20{margin-top:20px}
+.text-muted{color:var(--muted);font-size:.83rem}
+.admin-badge{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:2px 9px;border-radius:16px;font-size:.72rem;font-weight:700}
+@media(max-width:600px){nav{padding:11px 13px}.page{padding:13px}.hero h1{font-size:1.3rem}.stats-row,.result-grid{grid-template-columns:1fr 1fr}.grid-2,.grid-3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -140,7 +131,7 @@ td{padding:10px 8px;border-bottom:1px solid var(--border)}
     <button class="nav-tab" onclick="showPage('tests')">📋 Testlar</button>
     <button class="nav-tab" onclick="showPage('results')">📊 Natijalar</button>
     <button class="nav-tab" onclick="showPage('info')">📖 BSB/CHSB</button>
-    <button class="nav-tab" id="admin-tab" onclick="showAdminOrLogin()" style="display:none">⚙️ Admin</button>
+    <button class="nav-tab" id="admin-nav-btn" onclick="showAdminOrLogin()">⚙️ Admin</button>
   </div>
 </nav>
 
@@ -163,24 +154,21 @@ td{padding:10px 8px;border-bottom:1px solid var(--border)}
 
 <!-- TESTS LIST -->
 <div class="page" id="page-tests">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
     <div class="section-title" style="margin:0">📋 Barcha testlar</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <select id="filter-subject" onchange="renderTests()" style="width:auto;padding:8px 12px">
+      <select id="filter-subject" onchange="renderTests()" style="width:auto;padding:7px 11px">
         <option value="">Barcha fanlar</option>
       </select>
-      <select id="filter-type" onchange="renderTests()" style="width:auto;padding:8px 12px">
+      <select id="filter-type" onchange="renderTests()" style="width:auto;padding:7px 11px">
         <option value="">Barcha turlar</option>
-        <option value="BSB">BSB</option>
-        <option value="CHSB">CHSB</option>
-        <option value="Mashq">Mashq</option>
+        <option value="BSB">BSB</option><option value="CHSB">CHSB</option><option value="Mashq">Mashq</option>
       </select>
     </div>
   </div>
   <div class="cards-grid" id="tests-grid"></div>
-  <div id="no-tests" style="display:none;text-align:center;padding:60px;color:var(--muted)">
-    <div style="font-size:3rem;margin-bottom:12px">📭</div>
-    <div>Hali test yo'q</div>
+  <div id="no-tests" style="display:none;text-align:center;padding:50px;color:var(--muted)">
+    <div style="font-size:2.5rem;margin-bottom:10px">📭</div><div>Hali test yo'q</div>
   </div>
 </div>
 
@@ -188,14 +176,17 @@ td{padding:10px 8px;border-bottom:1px solid var(--border)}
 <div class="page" id="page-take">
   <div class="test-header">
     <div>
-      <div id="take-title" style="font-weight:700;font-size:1rem"></div>
-      <div id="take-meta" class="text-muted" style="margin-top:4px"></div>
+      <div id="take-title" style="font-weight:700;font-size:.98rem"></div>
+      <div id="take-meta" class="text-muted" style="margin-top:3px"></div>
     </div>
-    <div class="timer" id="timer-display">00:00</div>
+    <div>
+      <div class="timer" id="timer-display">00:00</div>
+      <div id="take-total-ball" style="text-align:right;font-size:.78rem;color:var(--muted);margin-top:2px"></div>
+    </div>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="take-progress" style="width:0%"></div></div>
 
-  <div id="take-name-section" class="form-section mt-16" style="margin-top:16px">
+  <div id="take-name-section" class="form-section mt-16" style="margin-top:14px">
     <div class="form-title">👤 Ma'lumotlaringizni kiriting</div>
     <div class="grid-2">
       <div class="form-group"><label>To'liq ism *</label><input type="text" id="student-name" placeholder="Aziz Karimov"/></div>
@@ -205,7 +196,7 @@ td{padding:10px 8px;border-bottom:1px solid var(--border)}
   </div>
 
   <div id="take-questions" style="display:none"></div>
-  <div id="take-nav" style="display:none;margin-top:16px;gap:10px;flex-wrap:wrap">
+  <div id="take-nav" style="display:none;margin-top:14px;gap:10px;flex-wrap:wrap">
     <button class="btn btn-primary" id="btn-finish" onclick="finishTest()">✅ Testni yakunlash</button>
   </div>
 </div>
@@ -214,19 +205,20 @@ td{padding:10px 8px;border-bottom:1px solid var(--border)}
 <div class="page" id="page-result">
   <div class="result-hero">
     <div class="score-circle" id="result-circle">
-      <div class="score-num" id="result-score"></div>
-      <div style="font-size:.7rem;opacity:.7">BALL</div>
+      <div class="score-num" id="result-score-pct"></div>
+      <div style="font-size:.68rem;opacity:.7">FOIZ</div>
     </div>
-    <h2 id="result-status" style="font-family:'Unbounded',sans-serif;font-size:1.3rem;margin-bottom:6px"></h2>
+    <h2 id="result-status" style="font-family:'Unbounded',sans-serif;font-size:1.2rem;margin-bottom:5px"></h2>
     <p id="result-msg" class="text-muted"></p>
-    <div id="result-grade" style="margin-top:12px;font-size:1.8rem"></div>
+    <div id="result-grade" style="margin-top:10px;font-size:1.6rem"></div>
+    <div id="result-ball-info" style="margin-top:6px;font-size:.88rem;color:var(--muted)"></div>
   </div>
   <div class="result-grid">
-    <div class="result-stat"><div class="result-stat-val" id="res-correct" style="color:var(--green)"></div><div class="result-stat-label">✅ To'g'ri</div></div>
-    <div class="result-stat"><div class="result-stat-val" id="res-wrong" style="color:var(--red)"></div><div class="result-stat-label">❌ Noto'g'ri</div></div>
+    <div class="result-stat"><div class="result-stat-val" id="res-earned" style="color:var(--green)"></div><div class="result-stat-label">✅ Earned ball</div></div>
+    <div class="result-stat"><div class="result-stat-val" id="res-correct"></div><div class="result-stat-label">✅ To'g'ri javob</div></div>
     <div class="result-stat"><div class="result-stat-val" id="res-time" style="color:var(--accent)"></div><div class="result-stat-label">⏱ Vaqt</div></div>
   </div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
     <button class="btn btn-primary" onclick="showPage('tests')">📋 Boshqa testlar</button>
     <button class="btn btn-outline" onclick="showPage('results')">📊 Natijalar</button>
   </div>
@@ -236,42 +228,32 @@ td{padding:10px 8px;border-bottom:1px solid var(--border)}
 <div class="page" id="page-results">
   <div class="section-title">📊 Natijalar jadvali</div>
   <div style="overflow-x:auto" id="results-table-wrap"></div>
-  <div id="no-results" style="display:none;text-align:center;padding:60px;color:var(--muted)">
-    <div style="font-size:3rem;margin-bottom:12px">📊</div><div>Hali natija yo'q</div>
+  <div id="no-results" style="display:none;text-align:center;padding:50px;color:var(--muted)">
+    <div style="font-size:2.5rem;margin-bottom:10px">📊</div><div>Hali natija yo'q</div>
   </div>
 </div>
 
-<!-- BSB/CHSB INFO -->
+<!-- BSB INFO -->
 <div class="page" id="page-info">
-  <div class="section-title">📖 BSB va CHSB tizimi haqida</div>
+  <div class="section-title">📖 BSB va CHSB tizimi</div>
   <div class="info-card">
-    <h3>📊 Maksimal ball taqsimoti</h3>
-    <p class="text-muted" style="margin-bottom:12px">Har bir chorakda o'quvchi maksimal <strong style="color:var(--text)">100 ball</strong> to'plashi mumkin:</p>
+    <h3>📊 Ball taqsimoti (chorakda)</h3>
     <table class="score-table">
       <tr><th>Baholash turi</th><th>Ball</th></tr>
-      <tr><td>Formativ baholash (faollik, vazifalar)</td><td>10–20 ball</td></tr>
+      <tr><td>Formativ baholash</td><td>10–20 ball</td></tr>
       <tr><td>BSB (mavzuviy nazoratlar)</td><td>40–50 ball</td></tr>
-      <tr><td>CHSB (chorak yakuniy imtihon)</td><td>30–40 ball</td></tr>
+      <tr><td>CHSB (chorak imtihoni)</td><td>30–40 ball</td></tr>
     </table>
   </div>
   <div class="info-card">
     <h3>🎯 Baholash mezonlari</h3>
     <table class="score-table">
       <tr><th>Ball</th><th>Baho</th><th>Holat</th></tr>
-      <tr><td>86–100</td><td>5 (A'lo)</td><td style="color:var(--green)">✅ O'tdi</td></tr>
-      <tr><td>66–85</td><td>4 (Yaxshi)</td><td style="color:var(--green)">✅ O'tdi</td></tr>
-      <tr><td>30–65</td><td>3 (Qoniqarli)</td><td style="color:var(--yellow)">⚠️ O'tdi (minimal)</td></tr>
-      <tr><td>0–29</td><td>2 (Qoniqarsiz)</td><td style="color:var(--red)">❌ O'tolmadi</td></tr>
+      <tr><td>86–100</td><td>5 (A'lo) ⭐</td><td style="color:var(--green)">O'tdi</td></tr>
+      <tr><td>66–85</td><td>4 (Yaxshi) 👍</td><td style="color:var(--green)">O'tdi</td></tr>
+      <tr><td>30–65</td><td>3 (Qoniqarli) 📚</td><td style="color:var(--yellow)">O'tdi (minimal)</td></tr>
+      <tr><td>0–29</td><td>2 (Qoniqarsiz) ❌</td><td style="color:var(--red)">O'tolmadi</td></tr>
     </table>
-  </div>
-  <div class="info-card">
-    <h3>📚 Fanlar bo'yicha BSB/CHSB shakli</h3>
-    <p style="color:var(--accent);font-weight:700;margin-bottom:8px">📈 Aniq va tabiiy fanlar (Matematika, Fizika, Kimyo, Biologiya, Informatika, Geografiya)</p>
-    <p class="text-muted">BSB: Yozma ish, nazorat ishi, masala yechish, laboratoriya ishi. CHSB: Ko'p variantli test yoki yozma imtihon.</p>
-    <p style="color:var(--accent2);font-weight:700;margin:12px 0 8px">📖 Gumanitar va til fanlari (Ona tili, Ingliz tili, Tarix, Tarbiya)</p>
-    <p class="text-muted">BSB: Listening, reading, writing, speaking alohida. CHSB: Barcha mavzularni qamragan yozma nazorat.</p>
-    <p style="color:var(--yellow);font-weight:700;margin:12px 0 8px">🎨 Amaliy fanlar (Jismoniy tarbiya, San'at, Musiqa, Texnologiya)</p>
-    <p class="text-muted">CHSB o'tkazilmaydi. Ballar amaliy normativlar va BSB asosida yig'iladi.</p>
   </div>
 </div>
 
@@ -279,19 +261,19 @@ td{padding:10px 8px;border-bottom:1px solid var(--border)}
 <div class="page" id="page-login">
   <div class="login-wrap">
     <div class="login-box">
-      <div class="lock-icon">🔐</div>
+      <div style="font-size:2.5rem;margin-bottom:14px">🔐</div>
       <h2>Admin Kirish</h2>
-      <p class="text-muted" style="margin-bottom:20px">Faqat o'qituvchilar uchun</p>
+      <p class="text-muted" style="margin-bottom:18px">Faqat o'qituvchilar uchun</p>
       <div class="form-group"><label>Parol</label><input type="password" id="admin-pass" placeholder="Parolni kiriting" onkeydown="if(event.key==='Enter')checkAdmin()"/></div>
       <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px" onclick="checkAdmin()">Kirish</button>
-      <p id="login-error" style="color:var(--red);font-size:.82rem;margin-top:10px;display:none">❌ Parol noto'g'ri!</p>
+      <p id="login-error" style="color:var(--red);font-size:.8rem;margin-top:8px;display:none">❌ Parol noto'g'ri!</p>
     </div>
   </div>
 </div>
 
 <!-- ADMIN PANEL -->
 <div class="page" id="page-admin">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
     <div class="section-title" style="margin:0">⚙️ Admin Panel <span class="admin-badge">O'qituvchi</span></div>
     <button class="btn btn-outline btn-sm" onclick="logout()">🚪 Chiqish</button>
   </div>
@@ -299,13 +281,13 @@ td{padding:10px 8px;border-bottom:1px solid var(--border)}
   <div class="form-section">
     <div class="form-title">📝 Yangi test yaratish</div>
     <div class="grid-2">
-      <div class="form-group"><label>Test nomi *</label><input type="text" id="test-title" placeholder="Masalan: 5-sinf Matematika BSB"/></div>
+      <div class="form-group"><label>Test nomi *</label><input type="text" id="test-title" placeholder="5-sinf Matematika BSB"/></div>
       <div class="form-group"><label>Test turi</label>
         <select id="test-type"><option value="BSB">BSB</option><option value="CHSB">CHSB</option><option value="Mashq">Mashq</option></select>
       </div>
     </div>
-    <div class="grid-2">
-      <div class="form-group"><label>Fan *</label>
+    <div class="grid-3">
+      <div class="form-group"><label>Fan</label>
         <select id="test-subject">
           <option>Matematika</option><option>Ona tili</option><option>Ingliz tili</option><option>Tarix</option>
           <option>Fizika</option><option>Kimyo</option><option>Biologiya</option><option>Geografiya</option>
@@ -319,21 +301,20 @@ td{padding:10px 8px;border-bottom:1px solid var(--border)}
           <option>9-sinf</option><option>10-sinf</option><option>11-sinf</option>
         </select>
       </div>
+      <div class="form-group"><label>Vaqt (daqiqa)</label><input type="number" id="test-time" value="30" min="1" max="180"/></div>
     </div>
     <div class="grid-2">
-      <div class="form-group"><label>Vaqt (daqiqa)</label><input type="number" id="test-time" value="30" min="1" max="180"/></div>
       <div class="form-group"><label>O'tish bali (%)</label><input type="number" id="test-pass" value="60" min="1" max="100"/></div>
-    </div>
-    <div class="form-group">
-      <label>Test rasmi (ixtiyoriy)</label>
-      <input type="file" id="test-img-file" accept="image/*" onchange="previewTestImg(this)" style="padding:8px"/>
-      <img id="test-img-preview" style="max-height:120px;border-radius:8px;margin-top:8px;display:none"/>
-      <input type="hidden" id="test-img-data"/>
+      <div class="form-group"><label>Test rasmi (ixtiyoriy)</label>
+        <input type="file" id="test-img-file" accept="image/*" onchange="previewTestImg(this)" style="padding:7px"/>
+        <img id="test-img-preview" style="max-height:100px;border-radius:7px;margin-top:6px;display:none"/>
+        <input type="hidden" id="test-img-data"/>
+      </div>
     </div>
   </div>
 
   <div class="form-section">
-    <div class="form-title">❓ Savollar</div>
+    <div class="form-title">❓ Savollar <span style="color:var(--muted);font-size:.78rem;font-weight:400">(har bir savolga ball belgilang)</span></div>
     <div id="questions-container"></div>
     <button class="btn btn-outline mt-16" onclick="addQuestion()">+ Savol qo'shish</button>
   </div>
@@ -350,12 +331,9 @@ td{padding:10px 8px;border-bottom:1px solid var(--border)}
 </div>
 
 <script>
-// ===== CONFIG =====
-const ADMIN_PASSWORD = '20maktab2024'; // O'zingiz o'zgartiring!
-
-// ===== STATE =====
-let tests = JSON.parse(localStorage.getItem('m20_tests') || '[]');
-let results = JSON.parse(localStorage.getItem('m20_results') || '[]');
+const ADMIN_PASSWORD = '20maktab2024';
+let tests = JSON.parse(localStorage.getItem('m20_tests')||'[]');
+let results = JSON.parse(localStorage.getItem('m20_results')||'[]');
 let isAdmin = false;
 let currentTest = null;
 let userAnswers = {};
@@ -364,22 +342,23 @@ let startTime = null;
 let timeLeft = 0;
 let qCount = 0;
 
-// ===== INIT =====
 updateStats(); renderHome(); renderTests(); renderResults();
-document.getElementById('admin-tab').style.display = 'flex';
-if(isAdmin) document.getElementById('admin-tab').style.display='flex';
 
 function save(){
-  localStorage.setItem('m20_tests', JSON.stringify(tests));
-  localStorage.setItem('m20_results', JSON.stringify(results));
+  localStorage.setItem('m20_tests',JSON.stringify(tests));
+  localStorage.setItem('m20_results',JSON.stringify(results));
 }
 
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  const map={home:0,tests:1,results:2,info:3};
-  if(map[id]!==undefined) document.querySelectorAll('.nav-tab')[map[id]].classList.add('active');
+  const map={home:0,tests:1,results:2,info:3,login:4,admin:4};
+  const idx=map[id];
+  if(idx!==undefined) document.querySelectorAll('.nav-tab')[idx]?.classList.add('active');
+  if(id==='tests'){renderTests();updateFilterOptions();}
+  if(id==='results') renderResults();
+  if(id==='home'){updateStats();renderHome();}
 }
 
 function showAdminOrLogin(){
@@ -388,12 +367,12 @@ function showAdminOrLogin(){
 }
 
 function checkAdmin(){
-  const pass = document.getElementById('admin-pass').value;
-  if(pass === ADMIN_PASSWORD){
-    isAdmin = true;
+  const pass=document.getElementById('admin-pass').value;
+  if(pass===ADMIN_PASSWORD){
+    isAdmin=true;
     document.getElementById('login-error').style.display='none';
     document.getElementById('admin-pass').value='';
-    addQuestion(); addQuestion(); addQuestion();
+    if(!document.querySelectorAll('.question-block').length){addQuestion();addQuestion();addQuestion();}
     renderAdminTests();
     showPage('admin');
   } else {
@@ -401,105 +380,110 @@ function checkAdmin(){
   }
 }
 
-function logout(){
-  isAdmin = false;
-  showPage('home');
-}
+function logout(){isAdmin=false;showPage('home');}
 
-// ===== STATS =====
 function updateStats(){
-  document.getElementById('stat-tests').textContent = tests.length;
-  document.getElementById('stat-attempts').textContent = results.length;
+  document.getElementById('stat-tests').textContent=tests.length;
+  document.getElementById('stat-attempts').textContent=results.length;
   if(results.length){
-    const avg = Math.round(results.reduce((s,r)=>s+r.score,0)/results.length);
-    document.getElementById('stat-avg').textContent = avg+'%';
+    const avg=Math.round(results.reduce((s,r)=>s+r.scorePct,0)/results.length);
+    document.getElementById('stat-avg').textContent=avg+'%';
   }
 }
 
 function renderHome(){
-  const el = document.getElementById('home-recent');
-  const recent = [...tests].reverse().slice(0,6);
-  el.innerHTML = recent.length ? recent.map(t=>testCardHTML(t)).join('') : '<p class="text-muted">Hali test yaratilmagan</p>';
+  const el=document.getElementById('home-recent');
+  const recent=[...tests].reverse().slice(0,6);
+  el.innerHTML=recent.length?recent.map(t=>testCardHTML(t)).join(''):'<p class="text-muted">Hali test yaratilmagan</p>';
 }
 
-// ===== TEST CARDS =====
 function testCardHTML(t){
-  const attempts = results.filter(r=>r.testId===t.id).length;
-  const typeColor = t.type==='CHSB' ? 'badge-red' : t.type==='BSB' ? 'badge-blue' : 'badge-green';
+  const attempts=results.filter(r=>r.testId===t.id).length;
+  const maxBall=t.questions.reduce((s,q)=>s+(q.ball||1),0);
+  const typeColor=t.type==='CHSB'?'badge-red':t.type==='BSB'?'badge-blue':'badge-green';
   return `<div class="test-card" onclick="openTest('${t.id}')">
-    ${t.imgData ? `<img src="${t.imgData}" class="test-card-img" alt="test"/>` : ''}
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+    ${t.imgData?`<img src="${t.imgData}" class="test-card-img" alt=""/>`:''}
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
       <div class="test-card-subject">${t.subject} · ${t.class}</div>
       <span class="badge ${typeColor}">${t.type}</span>
     </div>
     <div class="test-card-title">${t.title}</div>
     <div class="test-card-meta">
       <span>❓ ${t.questions.length} savol</span>
+      <span>🏆 ${maxBall} ball</span>
       <span>⏱ ${t.time} daq</span>
-      <span>👥 ${attempts} urinish</span>
+      <span>👥 ${attempts}</span>
     </div>
   </div>`;
 }
 
 function updateFilterOptions(){
-  const sel = document.getElementById('filter-subject');
-  const cur = sel.value;
-  const subjects = [...new Set(tests.map(t=>t.subject))];
-  sel.innerHTML = '<option value="">Barcha fanlar</option>' + subjects.map(s=>`<option value="${s}" ${s===cur?'selected':''}>${s}</option>`).join('');
+  const sel=document.getElementById('filter-subject');
+  const cur=sel.value;
+  const subjects=[...new Set(tests.map(t=>t.subject))];
+  sel.innerHTML='<option value="">Barcha fanlar</option>'+subjects.map(s=>`<option value="${s}"${s===cur?' selected':''}>${s}</option>`).join('');
 }
 
 function renderTests(){
-  updateFilterOptions();
-  const grid = document.getElementById('tests-grid');
-  const none = document.getElementById('no-tests');
-  const subj = document.getElementById('filter-subject')?.value||'';
-  const type = document.getElementById('filter-type')?.value||'';
-  let filtered = tests.filter(t=>(!subj||t.subject===subj)&&(!type||t.type===type)).reverse();
+  const grid=document.getElementById('tests-grid');
+  const none=document.getElementById('no-tests');
+  const subj=document.getElementById('filter-subject')?.value||'';
+  const type=document.getElementById('filter-type')?.value||'';
+  let filtered=tests.filter(t=>(!subj||t.subject===subj)&&(!type||t.type===type)).reverse();
   if(!filtered.length){grid.innerHTML='';none.style.display='block';return;}
   none.style.display='none';
-  grid.innerHTML = filtered.map(t=>testCardHTML(t)).join('');
+  grid.innerHTML=filtered.map(t=>testCardHTML(t)).join('');
 }
 
-// ===== ADMIN FORM =====
+// ADMIN FORM
 function previewTestImg(input){
-  const file = input.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    document.getElementById('test-img-preview').src = e.target.result;
-    document.getElementById('test-img-preview').style.display = 'block';
-    document.getElementById('test-img-data').value = e.target.result;
+  const file=input.files[0];if(!file)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    document.getElementById('test-img-preview').src=e.target.result;
+    document.getElementById('test-img-preview').style.display='block';
+    document.getElementById('test-img-data').value=e.target.result;
   };
-  reader.readAsDataURL(file);
+  r.readAsDataURL(file);
 }
 
 function addQuestion(){
   qCount++;
-  const id = 'q'+Date.now()+qCount;
-  const num = document.querySelectorAll('.question-block').length+1;
-  const div = document.createElement('div');
-  div.className='question-block'; div.id=id;
+  const id='q'+Date.now()+qCount;
+  const num=document.querySelectorAll('.question-block').length+1;
+  const div=document.createElement('div');
+  div.className='question-block';div.id=id;
   div.innerHTML=`
     <div class="question-header">
-      <div class="question-num">Savol ${num}</div>
-      <button onclick="removeQuestion('${id}')" style="background:var(--red);color:#fff;border:none;border-radius:7px;padding:5px 11px;cursor:pointer;font-size:.78rem">✕</button>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="question-num">Savol ${num}</div>
+        <span class="q-ball-badge">Ball: <span class="ball-show">1</span></span>
+      </div>
+      <button onclick="removeQuestion('${id}')" style="background:var(--red);color:#fff;border:none;border-radius:7px;padding:4px 10px;cursor:pointer;font-size:.75rem">✕</button>
     </div>
-    <div class="form-group">
-      <input type="text" placeholder="Savol matni..." class="q-text-input"/>
+    <div class="grid-2" style="margin-bottom:10px">
+      <div class="form-group" style="margin:0">
+        <label>Savol matni *</label>
+        <input type="text" placeholder="Savol matni..." class="q-text-input"/>
+      </div>
+      <div class="form-group" style="margin:0">
+        <label>Bu savol uchun ball</label>
+        <input type="number" class="q-ball-input" value="1" min="1" max="20" oninput="this.closest('.question-block').querySelector('.ball-show').textContent=this.value"/>
+      </div>
     </div>
     <div class="form-group">
       <label>Savol rasmi (ixtiyoriy)</label>
-      <input type="file" accept="image/*" class="q-img-file" onchange="previewQImg(this,'${id}')" style="padding:6px"/>
-      <img class="img-preview" id="qimg-${id}" style="display:none"/>
+      <input type="file" accept="image/*" class="q-img-file" onchange="previewQImg(this,'${id}')" style="padding:5px"/>
+      <img class="img-preview" id="qimg-${id}"/>
       <input type="hidden" class="q-img-data"/>
     </div>
     <div class="options-list">
       ${['A','B','C','D'].map((l,i)=>`
         <div class="option-row">
-          <span style="color:var(--accent);font-weight:800;width:18px;flex-shrink:0">${l}</span>
+          <span style="color:var(--accent);font-weight:800;width:16px;flex-shrink:0">${l}</span>
           <input type="text" placeholder="${l} variant..." class="opt-input" data-opt="${i}"/>
           <input type="file" accept="image/*" class="opt-img-file" data-opt="${i}" onchange="previewOptImg(this,'${id}',${i})" style="display:none"/>
-          <button class="option-img-btn" onclick="document.querySelectorAll('#${id} .opt-img-file')[${i}].click()">🖼</button>
+          <button class="option-img-btn" onclick="document.querySelectorAll('#${id} .opt-img-file')[${i}].click()" title="Rasm qo'shish">🖼</button>
           <img class="opt-img-preview" id="optimg-${id}-${i}"/>
           <input type="hidden" class="opt-img-data" data-opt="${i}"/>
           <input type="radio" name="correct-${id}" class="correct-radio" value="${i}" title="To'g'ri javob"/>
@@ -510,33 +494,29 @@ function addQuestion(){
   renumberQuestions();
 }
 
-function previewQImg(input, id){
-  const file = input.files[0]; if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    const img = document.getElementById('qimg-'+id);
-    img.src = e.target.result; img.style.display='block';
-    input.closest('.question-block').querySelector('.q-img-data').value = e.target.result;
+function previewQImg(input,id){
+  const file=input.files[0];if(!file)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const img=document.getElementById('qimg-'+id);
+    img.src=e.target.result;img.style.display='block';
+    input.closest('.question-block').querySelector('.q-img-data').value=e.target.result;
   };
-  reader.readAsDataURL(file);
+  r.readAsDataURL(file);
 }
 
-function previewOptImg(input, qid, oi){
-  const file = input.files[0]; if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    const img = document.getElementById(`optimg-${qid}-${oi}`);
-    img.src = e.target.result; img.style.display='block';
-    const block = input.closest('.question-block');
-    block.querySelectorAll('.opt-img-data')[oi].value = e.target.result;
+function previewOptImg(input,qid,oi){
+  const file=input.files[0];if(!file)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const img=document.getElementById(`optimg-${qid}-${oi}`);
+    img.src=e.target.result;img.style.display='block';
+    input.closest('.question-block').querySelectorAll('.opt-img-data')[oi].value=e.target.result;
   };
-  reader.readAsDataURL(file);
+  r.readAsDataURL(file);
 }
 
-function removeQuestion(id){
-  document.getElementById(id)?.remove();
-  renumberQuestions();
-}
+function removeQuestion(id){document.getElementById(id)?.remove();renumberQuestions();}
 
 function renumberQuestions(){
   document.querySelectorAll('.question-block').forEach((b,i)=>{
@@ -545,44 +525,39 @@ function renumberQuestions(){
 }
 
 function saveTest(){
-  const title = document.getElementById('test-title').value.trim();
+  const title=document.getElementById('test-title').value.trim();
   if(!title){alert('Test nomini kiriting!');return;}
-  const blocks = document.querySelectorAll('.question-block');
+  const blocks=document.querySelectorAll('.question-block');
   if(!blocks.length){alert('Kamida 1 savol kiriting!');return;}
-  const questions=[];
-  let valid=true;
+  const questions=[];let valid=true;
   blocks.forEach((b,i)=>{
-    const text = b.querySelector('.q-text-input').value.trim();
-    const opts = [...b.querySelectorAll('.opt-input')].map(o=>o.value.trim());
-    const optImgs = [...b.querySelectorAll('.opt-img-data')].map(o=>o.value);
-    const correct = b.querySelector('.correct-radio:checked');
-    const qImgData = b.querySelector('.q-img-data')?.value||'';
+    const text=b.querySelector('.q-text-input').value.trim();
+    const opts=[...b.querySelectorAll('.opt-input')].map(o=>o.value.trim());
+    const optImgs=[...b.querySelectorAll('.opt-img-data')].map(o=>o.value);
+    const correct=b.querySelector('.correct-radio:checked');
+    const qImgData=b.querySelector('.q-img-data')?.value||'';
+    const ball=parseInt(b.querySelector('.q-ball-input')?.value)||1;
     if(!text||opts.some(o=>!o)||!correct){
       alert(`Savol ${i+1}: barcha maydonlarni to'ldiring va to'g'ri javobni belgilang!`);
       valid=false;
     } else {
-      questions.push({text,options:opts,optImgs,correct:parseInt(correct.value),imgData:qImgData});
+      questions.push({text,options:opts,optImgs,correct:parseInt(correct.value),imgData:qImgData,ball});
     }
   });
-  if(!valid) return;
+  if(!valid)return;
   const test={
-    id:'t_'+Date.now(),
-    title,
+    id:'t_'+Date.now(),title,
     type:document.getElementById('test-type').value,
     subject:document.getElementById('test-subject').value,
     class:document.getElementById('test-class').value,
     time:parseInt(document.getElementById('test-time').value),
     pass:parseInt(document.getElementById('test-pass').value),
     imgData:document.getElementById('test-img-data').value,
-    questions,
-    created:new Date().toLocaleDateString('uz-UZ')
+    questions,created:new Date().toLocaleDateString('uz-UZ')
   };
-  tests.push(test);
-  save();
+  tests.push(test);save();
   alert('✅ Test saqlandi!');
-  clearForm();
-  renderAdminTests();
-  updateStats();
+  clearForm();renderAdminTests();updateStats();renderHome();
 }
 
 function clearForm(){
@@ -593,41 +568,43 @@ function clearForm(){
   document.getElementById('test-img-preview').style.display='none';
   document.getElementById('questions-container').innerHTML='';
   qCount=0;
-  addQuestion(); addQuestion(); addQuestion();
+  addQuestion();addQuestion();addQuestion();
 }
 
 function renderAdminTests(){
-  const el = document.getElementById('admin-tests-list');
+  const el=document.getElementById('admin-tests-list');
   if(!tests.length){el.innerHTML='<p class="text-muted">Hali test yaratilmagan</p>';return;}
-  el.innerHTML = [...tests].reverse().map(t=>`
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+  el.innerHTML=[...tests].reverse().map(t=>{
+    const maxBall=t.questions.reduce((s,q)=>s+(q.ball||1),0);
+    return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
       <div>
         <div style="font-weight:700">${t.title}</div>
-        <div class="text-muted">${t.subject} · ${t.class} · ${t.questions.length} savol · ${t.type}</div>
+        <div class="text-muted">${t.subject} · ${t.class} · ${t.questions.length} savol · ${maxBall} ball · ${t.type}</div>
       </div>
-      <button onclick="deleteTest('${t.id}')" class="btn btn-red btn-sm">🗑️ O'chirish</button>
-    </div>`).join('');
+      <button onclick="deleteTest('${t.id}')" class="btn btn-red btn-sm">🗑️</button>
+    </div>`;
+  }).join('');
 }
 
 function deleteTest(id){
-  if(!confirm('Testni o\'chirishni tasdiqlaysizmi?')) return;
-  tests = tests.filter(t=>t.id!==id);
-  save(); renderAdminTests(); renderTests(); updateStats(); renderHome();
+  if(!confirm('Testni o\'chirishni tasdiqlaysizmi?'))return;
+  tests=tests.filter(t=>t.id!==id);
+  save();renderAdminTests();renderTests();updateStats();renderHome();
 }
 
-// ===== TAKE TEST =====
+// TAKE TEST
 function openTest(id){
-  currentTest = tests.find(t=>t.id===id);
-  if(!currentTest) return;
+  currentTest=tests.find(t=>t.id===id);if(!currentTest)return;
   userAnswers={};
-  if(timerInterval) clearInterval(timerInterval);
-  document.getElementById('take-title').textContent = currentTest.title;
-  document.getElementById('take-meta').textContent = `${currentTest.subject} · ${currentTest.class} · ${currentTest.questions.length} savol · ${currentTest.time} daqiqa · ${currentTest.type}`;
+  if(timerInterval)clearInterval(timerInterval);
+  const maxBall=currentTest.questions.reduce((s,q)=>s+(q.ball||1),0);
+  document.getElementById('take-title').textContent=currentTest.title;
+  document.getElementById('take-meta').textContent=`${currentTest.subject} · ${currentTest.class} · ${currentTest.questions.length} savol · ${currentTest.time} daqiqa · ${currentTest.type}`;
+  document.getElementById('take-total-ball').textContent=`Maksimal: ${maxBall} ball`;
   document.getElementById('take-progress').style.width='0%';
   document.getElementById('take-name-section').style.display='block';
   document.getElementById('take-questions').style.display='none';
   document.getElementById('take-nav').style.display='none';
-  document.getElementById('btn-finish').style.display='none';
   document.getElementById('student-name').value='';
   document.getElementById('student-class').value='';
   document.getElementById('timer-display').textContent=formatTime(currentTest.time*60);
@@ -636,41 +613,38 @@ function openTest(id){
 }
 
 function startTest(){
-  const name = document.getElementById('student-name').value.trim();
+  const name=document.getElementById('student-name').value.trim();
   if(!name){alert('Ismingizni kiriting!');return;}
   document.getElementById('take-name-section').style.display='none';
   document.getElementById('take-questions').style.display='block';
   document.getElementById('take-nav').style.display='flex';
-  document.getElementById('btn-finish').style.display='inline-flex';
   renderTakeQuestions();
-  startTime = Date.now();
-  timeLeft = currentTest.time*60;
-  timerInterval = setInterval(()=>{
+  startTime=Date.now();timeLeft=currentTest.time*60;
+  timerInterval=setInterval(()=>{
     timeLeft--;
     document.getElementById('timer-display').textContent=formatTime(timeLeft);
     const el=document.getElementById('timer-display');
-    if(timeLeft<=60) el.className='timer danger';
-    else if(timeLeft<=currentTest.time*60*0.25) el.className='timer warning';
+    if(timeLeft<=60)el.className='timer danger';
+    else if(timeLeft<=currentTest.time*60*0.25)el.className='timer warning';
     if(timeLeft<=0){clearInterval(timerInterval);finishTest();}
   },1000);
 }
 
-function formatTime(s){
-  return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
-}
+function formatTime(s){return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;}
 
 function renderTakeQuestions(){
-  const cont = document.getElementById('take-questions');
-  cont.innerHTML = currentTest.questions.map((q,qi)=>`
+  const cont=document.getElementById('take-questions');
+  cont.innerHTML=currentTest.questions.map((q,qi)=>`
     <div class="q-card" id="qcard-${qi}">
-      ${q.imgData?`<img src="${q.imgData}" class="q-img" alt="savol rasmi"/>`:''}
+      ${q.imgData?`<img src="${q.imgData}" class="q-img" alt=""/>`:''}
+      <div class="q-ball-info">💎 Bu savol: ${q.ball||1} ball</div>
       <div class="q-text">${qi+1}. ${q.text}</div>
       <div class="answer-options">
         ${q.options.map((o,oi)=>`
           <button class="answer-btn" id="opt-${qi}-${oi}" onclick="selectAnswer(${qi},${oi})">
             <div class="answer-letter">${'ABCD'[oi]}</div>
-            <span>${o}</span>
-            ${q.optImgs&&q.optImgs[oi]?`<img src="${q.optImgs[oi]}" class="opt-img" alt="variant rasmi"/>`:''}
+            <span style="flex:1">${o}</span>
+            ${q.optImgs&&q.optImgs[oi]?`<img src="${q.optImgs[oi]}" class="opt-img-show" alt=""/>`:''}
           </button>`).join('')}
       </div>
     </div>`).join('');
@@ -679,8 +653,7 @@ function renderTakeQuestions(){
 function selectAnswer(qi,oi){
   userAnswers[qi]=oi;
   currentTest.questions[qi].options.forEach((_,i)=>{
-    const btn=document.getElementById(`opt-${qi}-${i}`);
-    btn.className='answer-btn'+(i===oi?' selected':'');
+    document.getElementById(`opt-${qi}-${i}`).className='answer-btn'+(i===oi?' selected':'');
   });
   updateProgress();
 }
@@ -691,43 +664,49 @@ function updateProgress(){
 }
 
 function finishTest(){
-  if(timerInterval) clearInterval(timerInterval);
+  if(timerInterval)clearInterval(timerInterval);
   const elapsed=Math.round((Date.now()-startTime)/1000);
   const name=document.getElementById('student-name').value.trim()||"Noma'lum";
   const cls=document.getElementById('student-class').value.trim()||'';
-  let correct=0;
-  currentTest.questions.forEach((q,i)=>{if(userAnswers[i]===q.correct) correct++;});
-  const score=Math.round((correct/currentTest.questions.length)*100);
-  const passed=score>=currentTest.pass;
+  let earnedBall=0;let correct=0;
+  const maxBall=currentTest.questions.reduce((s,q)=>s+(q.ball||1),0);
+  currentTest.questions.forEach((q,i)=>{
+    if(userAnswers[i]===q.correct){correct++;earnedBall+=(q.ball||1);}
+  });
+  const scorePct=Math.round((earnedBall/maxBall)*100);
+  const passed=scorePct>=currentTest.pass;
   let grade='';
-  if(score>=86) grade='5 (A\'lo) 🌟';
-  else if(score>=66) grade='4 (Yaxshi) 👍';
-  else if(score>=30) grade='3 (Qoniqarli) 📚';
-  else grade='2 (Qoniqarsiz) 😔';
+  if(scorePct>=86)grade="5 (A'lo) ⭐";
+  else if(scorePct>=66)grade='4 (Yaxshi) 👍';
+  else if(scorePct>=30)grade='3 (Qoniqarli) 📚';
+  else grade='2 (Qoniqarsiz) ❌';
 
   const result={
     id:'r_'+Date.now(),testId:currentTest.id,testTitle:currentTest.title,
     subject:currentTest.subject,type:currentTest.type,
     studentName:name,studentClass:cls,
-    score,correct,wrong:currentTest.questions.length-correct,
-    total:currentTest.questions.length,time:elapsed,passed,grade,
+    scorePct,earnedBall,maxBall,correct,
+    wrong:currentTest.questions.length-correct,
+    total:currentTest.questions.length,
+    time:elapsed,passed,grade,
     date:new Date().toLocaleString('uz-UZ')
   };
-  results.push(result);
-  save(); renderResults(); updateStats();
+  results.push(result);save();renderResults();updateStats();
   showResultPage(result);
 }
 
 function showResultPage(r){
   const circle=document.getElementById('result-circle');
-  circle.style.borderColor=r.score>=86?'var(--green)':r.score>=66?'#60a5fa':r.score>=30?'var(--yellow)':'var(--red)';
-  document.getElementById('result-score').textContent=r.score+'%';
-  document.getElementById('result-score').style.color=r.score>=86?'var(--green)':r.score>=66?'#60a5fa':r.score>=30?'var(--yellow)':'var(--red)';
+  const color=r.scorePct>=86?'var(--green)':r.scorePct>=66?'#60a5fa':r.scorePct>=30?'var(--yellow)':'var(--red)';
+  circle.style.borderColor=color;
+  document.getElementById('result-score-pct').textContent=r.scorePct+'%';
+  document.getElementById('result-score-pct').style.color=color;
   document.getElementById('result-status').textContent=r.passed?'🎉 O\'tdingiz!':'😔 O\'tolmadingiz';
   document.getElementById('result-msg').textContent=`${r.studentName}${r.studentClass?' · '+r.studentClass:''} · ${r.testTitle}`;
   document.getElementById('result-grade').textContent=r.grade;
-  document.getElementById('res-correct').textContent=r.correct;
-  document.getElementById('res-wrong').textContent=r.wrong;
+  document.getElementById('result-ball-info').textContent=`${r.earnedBall} / ${r.maxBall} ball to'plandi`;
+  document.getElementById('res-earned').textContent=r.earnedBall+'/'+r.maxBall;
+  document.getElementById('res-correct').textContent=r.correct+'/'+r.total;
   document.getElementById('res-time').textContent=formatTime(r.time);
   showPage('result');
 }
@@ -738,27 +717,26 @@ function renderResults(){
   if(!results.length){wrap.innerHTML='';none.style.display='block';return;}
   none.style.display='none';
   wrap.innerHTML=`<table>
-    <thead><tr><th>O'quvchi</th><th>Sinf</th><th>Test</th><th>Tur</th><th>Ball</th><th>Baho</th><th>Holat</th><th>Sana</th></tr></thead>
-    <tbody>
-      ${[...results].reverse().map(r=>`<tr>
-        <td style="font-weight:700">${r.studentName}</td>
-        <td>${r.studentClass||'—'}</td>
-        <td style="color:var(--muted)">${r.testTitle}</td>
-        <td><span class="badge ${r.type==='CHSB'?'badge-red':'badge-blue'}">${r.type||'—'}</span></td>
-        <td style="font-family:'Unbounded',sans-serif;font-weight:700;color:${r.score>=86?'var(--green)':r.score>=66?'#60a5fa':r.score>=30?'var(--yellow)':'var(--red)'}">${r.score}%</td>
-        <td>${r.grade||'—'}</td>
-        <td><span class="badge ${r.passed?'badge-green':'badge-red'}">${r.passed?'O\'tdi':'O\'tolmadi'}</span></td>
-        <td style="color:var(--muted);font-size:.78rem">${r.date}</td>
-      </tr>`).join('')}
-    </tbody>
+    <thead><tr><th>O'quvchi</th><th>Sinf</th><th>Test</th><th>Tur</th><th>Ball</th><th>%</th><th>Baho</th><th>Holat</th><th>Sana</th></tr></thead>
+    <tbody>${[...results].reverse().map(r=>`<tr>
+      <td style="font-weight:700">${r.studentName}</td>
+      <td>${r.studentClass||'—'}</td>
+      <td style="color:var(--muted);font-size:.8rem">${r.testTitle}</td>
+      <td><span class="badge ${r.type==='CHSB'?'badge-red':'badge-blue'}">${r.type||'—'}</span></td>
+      <td style="font-weight:700;color:var(--accent)">${r.earnedBall||r.correct}/${r.maxBall||r.total}</td>
+      <td style="font-family:'Unbounded',sans-serif;font-weight:700;color:${r.scorePct>=86?'var(--green)':r.scorePct>=66?'#60a5fa':r.scorePct>=30?'var(--yellow)':'var(--red)'}">${r.scorePct}%</td>
+      <td style="font-size:.82rem">${r.grade||'—'}</td>
+      <td><span class="badge ${r.passed?'badge-green':'badge-red'}">${r.passed?'O\'tdi':'O\'tolmadi'}</span></td>
+      <td style="color:var(--muted);font-size:.75rem">${r.date}</td>
+    </tr>`).join('')}</tbody>
   </table>
-  <div style="margin-top:14px;display:flex;justify-content:flex-end">
+  <div style="margin-top:12px;display:flex;justify-content:flex-end">
     <button class="btn btn-red btn-sm" onclick="clearResults()">🗑️ Natijalarni tozalash</button>
   </div>`;
 }
 
 function clearResults(){
-  if(!confirm('Barcha natijalarni o\'chirishni tasdiqlaysizmi?')) return;
+  if(!confirm('Barcha natijalarni o\'chirishni tasdiqlaysizmi?'))return;
   results=[];save();renderResults();updateStats();
 }
 </script>
