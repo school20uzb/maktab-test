@@ -10,136 +10,206 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid var(--border);background:rgba(11,14,26,.97);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);flex-wrap:wrap;gap:10px}
-.logo{font-family:'Unbounded',sans-serif;font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo{font-family:'Unbounded',sans-serif;font-size:1.05rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .nav-tabs{display:flex;gap:6px;flex-wrap:wrap}
-.nav-tab{padding:7px 14px;border-radius:20px;border:none;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:700;transition:all .2s;background:transparent;color:var(--muted)}
+.nav-tab{padding:7px 13px;border-radius:20px;border:none;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:700;transition:all .2s;background:transparent;color:var(--muted)}
 .nav-tab.active,.nav-tab:hover{background:var(--surface);color:var(--text)}
 .page{display:none;padding:24px;max-width:980px;margin:0 auto;animation:fadeIn .3s ease}
 .page.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-.hero{text-align:center;padding:40px 0 28px}
-.hero h1{font-family:'Unbounded',sans-serif;font-size:1.9rem;font-weight:800;line-height:1.2;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{margin-top:10px;color:var(--muted);font-size:.95rem;max-width:480px;margin-left:auto;margin-right:auto}
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;text-align:center}
-.stat-num{font-family:'Unbounded',sans-serif;font-size:1.7rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.stat-label{color:var(--muted);font-size:.78rem;margin-top:4px}
+/* CLOSED SCREEN */
+.closed-wrap{min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center}
+.closed-box{padding:40px 30px}
+.closed-icon{font-size:5rem;margin-bottom:20px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.closed-box h2{font-family:'Unbounded',sans-serif;font-size:1.6rem;margin-bottom:12px;color:var(--red)}
+.closed-box p{color:var(--muted);font-size:1rem;max-width:400px;margin:0 auto}
 
-.section-title{font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;margin-bottom:16px}
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
-.test-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+/* LOGIN */
+.login-wrap{min-height:88vh;display:flex;align-items:center;justify-content:center}
+.login-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:36px;width:100%;max-width:380px;text-align:center}
+.login-box h2{font-family:'Unbounded',sans-serif;font-size:1.1rem;margin-bottom:6px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* HERO */
+.hero{text-align:center;padding:36px 0 24px}
+.hero h1{font-family:'Unbounded',sans-serif;font-size:1.8rem;font-weight:800;line-height:1.2;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{margin-top:10px;color:var(--muted);font-size:.92rem;max-width:460px;margin-left:auto;margin-right:auto}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center}
+.stat-num{font-family:'Unbounded',sans-serif;font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{color:var(--muted);font-size:.75rem;margin-top:3px}
+
+.section-title{font-family:'Unbounded',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:14px}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.test-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
 .test-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-.test-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 28px rgba(79,142,247,.12)}
-.test-card-img{width:100%;height:110px;object-fit:cover;border-radius:8px;margin-bottom:10px}
-.test-card-subject{font-size:.73rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
-.test-card-title{font-size:.98rem;font-weight:700;margin-bottom:8px}
-.test-card-meta{display:flex;gap:10px;color:var(--muted);font-size:.78rem;flex-wrap:wrap}
-.badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:.73rem;font-weight:700}
+.test-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,.12)}
+.test-card-img{width:100%;height:100px;object-fit:cover;border-radius:7px;margin-bottom:9px}
+.test-card-subject{font-size:.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.test-card-title{font-size:.95rem;font-weight:700;margin-bottom:7px}
+.test-card-meta{display:flex;gap:9px;color:var(--muted);font-size:.76rem;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:.71rem;font-weight:700}
 .badge-green{background:rgba(34,197,94,.15);color:var(--green)}
 .badge-blue{background:rgba(79,142,247,.15);color:var(--accent)}
 .badge-red{background:rgba(239,68,68,.15);color:var(--red)}
 .badge-yellow{background:rgba(245,158,11,.15);color:var(--yellow)}
 
-.form-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:14px}
-.form-title{font-family:'Unbounded',sans-serif;font-size:.92rem;font-weight:700;margin-bottom:14px}
-.form-group{margin-bottom:12px}
-label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:4px}
-input,select,textarea{width:100%;padding:10px 13px;background:var(--surface);border:1.5px solid var(--border);border-radius:9px;color:var(--text);font-family:'Nunito',sans-serif;font-size:.88rem;transition:border .2s;outline:none}
+.form-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:13px}
+.form-title{font-family:'Unbounded',sans-serif;font-size:.88rem;font-weight:700;margin-bottom:13px}
+.form-group{margin-bottom:11px}
+label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:3px}
+input,select,textarea{width:100%;padding:10px 12px;background:var(--surface);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:'Nunito',sans-serif;font-size:.86rem;transition:border .2s;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--accent)}
-textarea{resize:vertical;min-height:65px}
+textarea{resize:vertical;min-height:60px}
 select option{background:var(--surface)}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px}
 
-.question-block{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px;margin-bottom:10px}
-.question-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.question-num{font-family:'Unbounded',sans-serif;font-size:.8rem;font-weight:700;color:var(--accent)}
-.q-ball-badge{background:rgba(79,142,247,.15);color:var(--accent);padding:2px 10px;border-radius:12px;font-size:.75rem;font-weight:700}
-.options-list{display:grid;gap:7px;margin-top:10px}
-.option-row{display:flex;align-items:center;gap:7px}
+.question-block{background:var(--surface);border:1.5px solid var(--border);border-radius:11px;padding:15px;margin-bottom:9px}
+.question-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.question-num{font-family:'Unbounded',sans-serif;font-size:.78rem;font-weight:700;color:var(--accent)}
+.q-ball-badge{background:rgba(79,142,247,.15);color:var(--accent);padding:2px 9px;border-radius:12px;font-size:.72rem;font-weight:700}
+.options-list{display:grid;gap:6px;margin-top:9px}
+.option-row{display:flex;align-items:center;gap:6px}
 .option-row input[type=text]{flex:1}
-.option-img-btn{background:var(--border);border:none;border-radius:6px;padding:5px 9px;cursor:pointer;color:var(--text);font-size:.78rem;white-space:nowrap;flex-shrink:0}
-.correct-radio{width:17px;height:17px;accent-color:var(--green);cursor:pointer;flex-shrink:0}
-.correct-label{font-size:.72rem;color:var(--green);font-weight:700;white-space:nowrap}
-.opt-img-preview{width:36px;height:36px;object-fit:cover;border-radius:5px;display:none;flex-shrink:0}
-.img-preview{width:100%;max-height:140px;object-fit:cover;border-radius:8px;margin:8px 0;display:none}
+.option-img-btn{background:var(--border);border:none;border-radius:5px;padding:5px 8px;cursor:pointer;color:var(--text);font-size:.75rem;white-space:nowrap;flex-shrink:0}
+.correct-radio{width:16px;height:16px;accent-color:var(--green);cursor:pointer;flex-shrink:0}
+.correct-label{font-size:.7rem;color:var(--green);font-weight:700;white-space:nowrap}
+.opt-img-preview{width:34px;height:34px;object-fit:cover;border-radius:5px;display:none;flex-shrink:0}
+.img-preview{width:100%;max-height:130px;object-fit:cover;border-radius:7px;margin:6px 0;display:none}
 
-.btn{padding:10px 22px;border-radius:10px;border:none;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
+.btn{padding:10px 20px;border-radius:9px;border:none;font-family:'Nunito',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
 .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
 .btn-primary:hover{opacity:.9;transform:translateY(-1px)}
 .btn-outline{background:transparent;color:var(--accent);border:2px solid var(--accent)}
 .btn-outline:hover{background:var(--accent);color:#fff}
 .btn-red{background:var(--red);color:#fff}
-.btn-sm{padding:5px 13px;font-size:.78rem}
+.btn-green{background:var(--green);color:#fff}
+.btn-sm{padding:5px 12px;font-size:.76rem}
+.btn-xs{padding:3px 9px;font-size:.72rem}
 
-/* LOGIN */
-.login-wrap{min-height:75vh;display:flex;align-items:center;justify-content:center}
-.login-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:36px;width:100%;max-width:380px;text-align:center}
-.login-box h2{font-family:'Unbounded',sans-serif;font-size:1.1rem;margin-bottom:6px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+/* TOGGLE */
+.toggle-wrap{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:16px}
+.toggle{position:relative;width:52px;height:28px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:var(--border);border-radius:28px;transition:.3s}
+.slider:before{position:absolute;content:"";height:20px;width:20px;left:4px;bottom:4px;background:white;border-radius:50%;transition:.3s}
+input:checked+.slider{background:var(--green)}
+input:checked+.slider:before{transform:translateX(24px)}
+.toggle-label{font-weight:700;font-size:.92rem}
+.toggle-desc{font-size:.78rem;color:var(--muted)}
 
 /* TEST TAKING */
-.test-header{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.timer{font-family:'Unbounded',sans-serif;font-size:1.3rem;font-weight:800;color:var(--accent)}
+.test-header{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:15px 19px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px}
+.timer{font-family:'Unbounded',sans-serif;font-size:1.25rem;font-weight:800;color:var(--accent)}
 .timer.warning{color:var(--yellow)}
 .timer.danger{color:var(--red);animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 .progress-bar{height:5px;background:var(--border);border-radius:3px}
 .progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s}
-.q-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:12px}
-.q-img{width:100%;max-height:200px;object-fit:contain;border-radius:9px;margin-bottom:12px}
-.q-text{font-size:1.02rem;font-weight:600;margin-bottom:14px;line-height:1.6}
-.q-ball-info{font-size:.78rem;color:var(--accent);font-weight:700;margin-bottom:10px}
-.answer-options{display:grid;gap:8px}
-.answer-btn{padding:12px 15px;background:var(--surface);border:1.5px solid var(--border);border-radius:9px;text-align:left;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:600;color:var(--text);transition:all .2s;display:flex;align-items:center;gap:9px;width:100%}
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:11px}
+.q-img{width:100%;max-height:190px;object-fit:contain;border-radius:8px;margin-bottom:11px}
+.q-text{font-size:1rem;font-weight:600;margin-bottom:13px;line-height:1.6}
+.q-ball-info{font-size:.76rem;color:var(--accent);font-weight:700;margin-bottom:9px}
+.answer-options{display:grid;gap:7px}
+.answer-btn{padding:11px 14px;background:var(--surface);border:1.5px solid var(--border);border-radius:9px;text-align:left;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.86rem;font-weight:600;color:var(--text);transition:all .2s;display:flex;align-items:center;gap:8px;width:100%}
 .answer-btn:hover{border-color:var(--accent);background:rgba(79,142,247,.08)}
 .answer-btn.selected{border-color:var(--accent);background:rgba(79,142,247,.12);color:var(--accent)}
-.answer-letter{width:28px;height:28px;border-radius:7px;background:var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0}
-.opt-img-show{width:48px;height:48px;object-fit:cover;border-radius:6px;margin-left:auto;flex-shrink:0}
+.answer-letter{width:27px;height:27px;border-radius:7px;background:var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;flex-shrink:0}
+.opt-img-show{width:44px;height:44px;object-fit:cover;border-radius:5px;margin-left:auto;flex-shrink:0}
 
 /* RESULT */
-.result-hero{text-align:center;padding:30px 16px}
-.score-circle{width:130px;height:130px;border-radius:50%;margin:0 auto 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:6px solid;font-family:'Unbounded',sans-serif}
-.score-num{font-size:1.9rem;font-weight:800}
-.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
-.result-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
-.result-stat-val{font-family:'Unbounded',sans-serif;font-size:1.4rem;font-weight:800}
-.result-stat-label{font-size:.76rem;color:var(--muted);margin-top:3px}
+.result-hero{text-align:center;padding:28px 14px}
+.score-circle{width:125px;height:125px;border-radius:50%;margin:0 auto 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:6px solid;font-family:'Unbounded',sans-serif}
+.score-num{font-size:1.85rem;font-weight:800}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:16px 0}
+.result-stat{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:13px;text-align:center}
+.result-stat-val{font-family:'Unbounded',sans-serif;font-size:1.35rem;font-weight:800}
+.result-stat-label{font-size:.73rem;color:var(--muted);margin-top:2px}
 
-table{width:100%;border-collapse:collapse;font-size:.85rem}
-th{text-align:left;padding:9px 8px;border-bottom:1px solid var(--border);color:var(--muted);font-weight:700}
-td{padding:9px 8px;border-bottom:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.83rem}
+th{text-align:left;padding:8px 7px;border-bottom:1px solid var(--border);color:var(--muted);font-weight:700}
+td{padding:8px 7px;border-bottom:1px solid var(--border)}
 
-.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
-.info-card h3{font-family:'Unbounded',sans-serif;font-size:.85rem;color:var(--accent);margin-bottom:10px}
-.score-table{width:100%;border-collapse:collapse;font-size:.83rem}
-.score-table th{background:var(--surface);padding:7px 10px;text-align:left;border:1px solid var(--border)}
-.score-table td{padding:7px 10px;border:1px solid var(--border)}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:17px;margin-bottom:11px}
+.info-card h3{font-family:'Unbounded',sans-serif;font-size:.83rem;color:var(--accent);margin-bottom:9px}
+.score-table{width:100%;border-collapse:collapse;font-size:.81rem}
+.score-table th{background:var(--surface);padding:7px 9px;text-align:left;border:1px solid var(--border)}
+.score-table td{padding:7px 9px;border:1px solid var(--border)}
+
+/* USER ROW */
+.user-row{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 15px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.user-info{display:flex;flex-direction:column;gap:2px}
+.user-name{font-weight:700;font-size:.9rem}
+.user-meta{font-size:.75rem;color:var(--muted)}
+.user-actions{display:flex;gap:6px}
 
 .mt-16{margin-top:16px}.mt-20{margin-top:20px}
-.text-muted{color:var(--muted);font-size:.83rem}
-.admin-badge{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:2px 9px;border-radius:16px;font-size:.72rem;font-weight:700}
-@media(max-width:600px){nav{padding:11px 13px}.page{padding:13px}.hero h1{font-size:1.3rem}.stats-row,.result-grid{grid-template-columns:1fr 1fr}.grid-2,.grid-3{grid-template-columns:1fr}}
+.text-muted{color:var(--muted);font-size:.82rem}
+.admin-badge{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:2px 8px;border-radius:14px;font-size:.7rem;font-weight:700}
+.online-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:5px;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@media(max-width:600px){nav{padding:10px 12px}.page{padding:12px}.hero h1{font-size:1.3rem}.stats-row,.result-grid{grid-template-columns:1fr 1fr}.grid-2,.grid-3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="logo">🏫 20-Maktab Test</div>
-  <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showPage('home')">🏠 Bosh</button>
-    <button class="nav-tab" onclick="showPage('tests')">📋 Testlar</button>
-    <button class="nav-tab" onclick="showPage('results')">📊 Natijalar</button>
-    <button class="nav-tab" onclick="showPage('info')">📖 BSB/CHSB</button>
-    <button class="nav-tab" id="admin-nav-btn" onclick="showAdminOrLogin()">⚙️ Admin</button>
+  <div id="nav-right" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <div id="nav-user-info" style="display:none;font-size:.8rem;color:var(--muted)"></div>
+    <div class="nav-tabs" id="nav-tabs" style="display:none">
+      <button class="nav-tab active" onclick="showPage('home')">🏠 Bosh</button>
+      <button class="nav-tab" onclick="showPage('tests')">📋 Testlar</button>
+      <button class="nav-tab" onclick="showPage('results')">📊 Natijalar</button>
+      <button class="nav-tab" onclick="showPage('info')">📖 BSB/CHSB</button>
+    </div>
+    <button id="admin-nav-btn" class="nav-tab" onclick="showAdminOrLogin()" style="display:none">⚙️ Admin</button>
+    <button id="logout-btn" class="btn btn-sm btn-outline" onclick="logoutUser()" style="display:none">🚪 Chiqish</button>
   </div>
 </nav>
+
+<!-- CLOSED SCREEN -->
+<div id="closed-screen" style="display:none">
+  <div class="closed-wrap">
+    <div class="closed-box">
+      <div class="closed-icon">🔒</div>
+      <h2>Platforma yopiq</h2>
+      <p>Hozirda platforma o'qituvchi tomonidan yopilgan. Keyinroq urinib ko'ring.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="main-app">
+
+<!-- USER LOGIN -->
+<div id="user-login-screen">
+  <div class="login-wrap">
+    <div class="login-box">
+      <div style="font-size:2.2rem;margin-bottom:12px">🎓</div>
+      <h2>20-Maktab Test</h2>
+      <p class="text-muted" style="margin-bottom:20px">Kirish uchun login va parolingizni kiriting</p>
+      <div class="form-group"><label>Login</label><input type="text" id="user-login-input" placeholder="Loginni kiriting" onkeydown="if(event.key==='Enter')loginUser()"/></div>
+      <div class="form-group"><label>Parol</label><input type="password" id="user-pass-input" placeholder="Parolni kiriting" onkeydown="if(event.key==='Enter')loginUser()"/></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px" onclick="loginUser()">▶️ Kirish</button>
+      <p id="user-login-error" style="color:var(--red);font-size:.78rem;margin-top:8px;display:none">❌ Login yoki parol noto'g'ri!</p>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
+        <button class="btn btn-sm btn-outline" style="width:100%;justify-content:center" onclick="showAdminLogin()">🔐 Admin kirish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGES -->
+<div id="pages-wrap" style="display:none">
 
 <!-- HOME -->
 <div class="page active" id="page-home">
   <div class="hero">
     <h1>20-Maktab Online Test Platformasi</h1>
-    <p>BSB va CHSB tizimida o'quvchilar uchun testlar</p>
+    <p id="home-welcome">BSB va CHSB tizimida o'quvchilar uchun testlar</p>
   </div>
   <div class="stats-row">
     <div class="stat-card"><div class="stat-num" id="stat-tests">0</div><div class="stat-label">Jami testlar</div></div>
@@ -152,15 +222,15 @@ td{padding:9px 8px;border-bottom:1px solid var(--border)}
   </div>
 </div>
 
-<!-- TESTS LIST -->
+<!-- TESTS -->
 <div class="page" id="page-tests">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;flex-wrap:wrap;gap:9px">
     <div class="section-title" style="margin:0">📋 Barcha testlar</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <select id="filter-subject" onchange="renderTests()" style="width:auto;padding:7px 11px">
+    <div style="display:flex;gap:7px;flex-wrap:wrap">
+      <select id="filter-subject" onchange="renderTests()" style="width:auto;padding:6px 10px">
         <option value="">Barcha fanlar</option>
       </select>
-      <select id="filter-type" onchange="renderTests()" style="width:auto;padding:7px 11px">
+      <select id="filter-type" onchange="renderTests()" style="width:auto;padding:6px 10px">
         <option value="">Barcha turlar</option>
         <option value="BSB">BSB</option><option value="CHSB">CHSB</option><option value="Mashq">Mashq</option>
       </select>
@@ -168,7 +238,7 @@ td{padding:9px 8px;border-bottom:1px solid var(--border)}
   </div>
   <div class="cards-grid" id="tests-grid"></div>
   <div id="no-tests" style="display:none;text-align:center;padding:50px;color:var(--muted)">
-    <div style="font-size:2.5rem;margin-bottom:10px">📭</div><div>Hali test yo'q</div>
+    <div style="font-size:2.5rem;margin-bottom:9px">📭</div><div>Hali test yo'q</div>
   </div>
 </div>
 
@@ -176,28 +246,23 @@ td{padding:9px 8px;border-bottom:1px solid var(--border)}
 <div class="page" id="page-take">
   <div class="test-header">
     <div>
-      <div id="take-title" style="font-weight:700;font-size:.98rem"></div>
+      <div id="take-title" style="font-weight:700;font-size:.95rem"></div>
       <div id="take-meta" class="text-muted" style="margin-top:3px"></div>
     </div>
     <div>
       <div class="timer" id="timer-display">00:00</div>
-      <div id="take-total-ball" style="text-align:right;font-size:.78rem;color:var(--muted);margin-top:2px"></div>
+      <div id="take-total-ball" style="text-align:right;font-size:.75rem;color:var(--muted);margin-top:2px"></div>
     </div>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="take-progress" style="width:0%"></div></div>
-
-  <div id="take-name-section" class="form-section mt-16" style="margin-top:14px">
-    <div class="form-title">👤 Ma'lumotlaringizni kiriting</div>
-    <div class="grid-2">
-      <div class="form-group"><label>To'liq ism *</label><input type="text" id="student-name" placeholder="Aziz Karimov"/></div>
-      <div class="form-group"><label>Sinf</label><input type="text" id="student-class" placeholder="9-A"/></div>
-    </div>
+  <div id="take-start-section" class="form-section mt-16" style="margin-top:13px">
+    <div class="form-title">✅ Testni boshlash</div>
+    <p class="text-muted" style="margin-bottom:14px">Siz: <strong id="take-student-name-show" style="color:var(--text)"></strong></p>
     <button class="btn btn-primary" onclick="startTest()">▶️ Testni boshlash</button>
   </div>
-
   <div id="take-questions" style="display:none"></div>
-  <div id="take-nav" style="display:none;margin-top:14px;gap:10px;flex-wrap:wrap">
-    <button class="btn btn-primary" id="btn-finish" onclick="finishTest()">✅ Testni yakunlash</button>
+  <div id="take-nav" style="display:none;margin-top:13px;gap:9px;flex-wrap:wrap">
+    <button class="btn btn-primary" onclick="finishTest()">✅ Testni yakunlash</button>
   </div>
 </div>
 
@@ -206,19 +271,19 @@ td{padding:9px 8px;border-bottom:1px solid var(--border)}
   <div class="result-hero">
     <div class="score-circle" id="result-circle">
       <div class="score-num" id="result-score-pct"></div>
-      <div style="font-size:.68rem;opacity:.7">FOIZ</div>
+      <div style="font-size:.66rem;opacity:.7">FOIZ</div>
     </div>
-    <h2 id="result-status" style="font-family:'Unbounded',sans-serif;font-size:1.2rem;margin-bottom:5px"></h2>
+    <h2 id="result-status" style="font-family:'Unbounded',sans-serif;font-size:1.15rem;margin-bottom:5px"></h2>
     <p id="result-msg" class="text-muted"></p>
-    <div id="result-grade" style="margin-top:10px;font-size:1.6rem"></div>
-    <div id="result-ball-info" style="margin-top:6px;font-size:.88rem;color:var(--muted)"></div>
+    <div id="result-grade" style="margin-top:9px;font-size:1.5rem"></div>
+    <div id="result-ball-info" style="margin-top:5px;font-size:.85rem;color:var(--muted)"></div>
   </div>
   <div class="result-grid">
-    <div class="result-stat"><div class="result-stat-val" id="res-earned" style="color:var(--green)"></div><div class="result-stat-label">✅ Earned ball</div></div>
-    <div class="result-stat"><div class="result-stat-val" id="res-correct"></div><div class="result-stat-label">✅ To'g'ri javob</div></div>
+    <div class="result-stat"><div class="result-stat-val" id="res-earned" style="color:var(--green)"></div><div class="result-stat-label">💎 Ball</div></div>
+    <div class="result-stat"><div class="result-stat-val" id="res-correct"></div><div class="result-stat-label">✅ To'g'ri</div></div>
     <div class="result-stat"><div class="result-stat-val" id="res-time" style="color:var(--accent)"></div><div class="result-stat-label">⏱ Vaqt</div></div>
   </div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+  <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:13px">
     <button class="btn btn-primary" onclick="showPage('tests')">📋 Boshqa testlar</button>
     <button class="btn btn-outline" onclick="showPage('results')">📊 Natijalar</button>
   </div>
@@ -229,11 +294,11 @@ td{padding:9px 8px;border-bottom:1px solid var(--border)}
   <div class="section-title">📊 Natijalar jadvali</div>
   <div style="overflow-x:auto" id="results-table-wrap"></div>
   <div id="no-results" style="display:none;text-align:center;padding:50px;color:var(--muted)">
-    <div style="font-size:2.5rem;margin-bottom:10px">📊</div><div>Hali natija yo'q</div>
+    <div style="font-size:2.5rem;margin-bottom:9px">📊</div><div>Hali natija yo'q</div>
   </div>
 </div>
 
-<!-- BSB INFO -->
+<!-- INFO -->
 <div class="page" id="page-info">
   <div class="section-title">📖 BSB va CHSB tizimi</div>
   <div class="info-card">
@@ -257,84 +322,142 @@ td{padding:9px 8px;border-bottom:1px solid var(--border)}
   </div>
 </div>
 
-<!-- ADMIN LOGIN -->
-<div class="page" id="page-login">
-  <div class="login-wrap">
-    <div class="login-box">
-      <div style="font-size:2.5rem;margin-bottom:14px">🔐</div>
-      <h2>Admin Kirish</h2>
-      <p class="text-muted" style="margin-bottom:18px">Faqat o'qituvchilar uchun</p>
-      <div class="form-group"><label>Parol</label><input type="password" id="admin-pass" placeholder="Parolni kiriting" onkeydown="if(event.key==='Enter')checkAdmin()"/></div>
-      <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px" onclick="checkAdmin()">Kirish</button>
-      <p id="login-error" style="color:var(--red);font-size:.8rem;margin-top:8px;display:none">❌ Parol noto'g'ri!</p>
-    </div>
+</div><!-- /pages-wrap -->
+</div><!-- /main-app -->
+
+<!-- ADMIN LOGIN MODAL -->
+<div id="admin-login-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center">
+  <div class="login-box" style="position:relative">
+    <button onclick="closeAdminModal()" style="position:absolute;top:12px;right:12px;background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:1.2rem">✕</button>
+    <div style="font-size:2rem;margin-bottom:10px">🔐</div>
+    <h2>Admin Kirish</h2>
+    <p class="text-muted" style="margin-bottom:16px">Faqat o'qituvchilar uchun</p>
+    <div class="form-group"><label>Parol</label><input type="password" id="admin-pass" placeholder="Admin paroli" onkeydown="if(event.key==='Enter')checkAdmin()"/></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:7px" onclick="checkAdmin()">Kirish</button>
+    <p id="login-error" style="color:var(--red);font-size:.77rem;margin-top:7px;display:none">❌ Parol noto'g'ri!</p>
   </div>
 </div>
 
 <!-- ADMIN PANEL -->
-<div class="page" id="page-admin">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+<div id="admin-panel" style="display:none;padding:20px;max-width:980px;margin:0 auto">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:9px">
     <div class="section-title" style="margin:0">⚙️ Admin Panel <span class="admin-badge">O'qituvchi</span></div>
-    <button class="btn btn-outline btn-sm" onclick="logout()">🚪 Chiqish</button>
+    <button class="btn btn-outline btn-sm" onclick="logoutAdmin()">🚪 Chiqish</button>
   </div>
 
-  <div class="form-section">
-    <div class="form-title">📝 Yangi test yaratish</div>
-    <div class="grid-2">
-      <div class="form-group"><label>Test nomi *</label><input type="text" id="test-title" placeholder="5-sinf Matematika BSB"/></div>
-      <div class="form-group"><label>Test turi</label>
-        <select id="test-type"><option value="BSB">BSB</option><option value="CHSB">CHSB</option><option value="Mashq">Mashq</option></select>
-      </div>
-    </div>
-    <div class="grid-3">
-      <div class="form-group"><label>Fan</label>
-        <select id="test-subject">
-          <option>Matematika</option><option>Ona tili</option><option>Ingliz tili</option><option>Tarix</option>
-          <option>Fizika</option><option>Kimyo</option><option>Biologiya</option><option>Geografiya</option>
-          <option>Informatika</option><option>Jismoniy tarbiya</option><option>Musiqa</option><option>Texnologiya</option><option>Boshqa</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Sinf</label>
-        <select id="test-class">
-          <option>1-sinf</option><option>2-sinf</option><option>3-sinf</option><option>4-sinf</option>
-          <option>5-sinf</option><option>6-sinf</option><option>7-sinf</option><option>8-sinf</option>
-          <option>9-sinf</option><option>10-sinf</option><option>11-sinf</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Vaqt (daqiqa)</label><input type="number" id="test-time" value="30" min="1" max="180"/></div>
-    </div>
-    <div class="grid-2">
-      <div class="form-group"><label>O'tish bali (%)</label><input type="number" id="test-pass" value="60" min="1" max="100"/></div>
-      <div class="form-group"><label>Test rasmi (ixtiyoriy)</label>
-        <input type="file" id="test-img-file" accept="image/*" onchange="previewTestImg(this)" style="padding:7px"/>
-        <img id="test-img-preview" style="max-height:100px;border-radius:7px;margin-top:6px;display:none"/>
-        <input type="hidden" id="test-img-data"/>
-      </div>
+  <!-- PLATFORM TOGGLE -->
+  <div class="toggle-wrap">
+    <label class="toggle">
+      <input type="checkbox" id="platform-toggle" checked onchange="togglePlatform(this.checked)">
+      <span class="slider"></span>
+    </label>
+    <div>
+      <div class="toggle-label" id="toggle-label"><span class="online-dot"></span>Platforma faol</div>
+      <div class="toggle-desc" id="toggle-desc">O'quvchilar kirishi va test ishlashi mumkin</div>
     </div>
   </div>
 
-  <div class="form-section">
-    <div class="form-title">❓ Savollar <span style="color:var(--muted);font-size:.78rem;font-weight:400">(har bir savolga ball belgilang)</span></div>
-    <div id="questions-container"></div>
-    <button class="btn btn-outline mt-16" onclick="addQuestion()">+ Savol qo'shish</button>
+  <!-- TABS -->
+  <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+    <button class="btn btn-primary btn-sm" onclick="showAdminTab('tests')">📝 Testlar</button>
+    <button class="btn btn-outline btn-sm" onclick="showAdminTab('users')">👥 O'quvchilar</button>
+    <button class="btn btn-outline btn-sm" onclick="showAdminTab('results')">📊 Natijalar</button>
   </div>
 
-  <div style="display:flex;gap:10px;flex-wrap:wrap">
-    <button class="btn btn-primary" onclick="saveTest()">💾 Saqlash</button>
-    <button class="btn btn-outline" onclick="clearForm()">🗑️ Tozalash</button>
+  <!-- ADMIN TESTS TAB -->
+  <div id="admin-tab-tests">
+    <div class="form-section">
+      <div class="form-title">📝 Yangi test yaratish</div>
+      <div class="grid-2">
+        <div class="form-group"><label>Test nomi *</label><input type="text" id="test-title" placeholder="5-sinf Matematika BSB"/></div>
+        <div class="form-group"><label>Test turi</label>
+          <select id="test-type"><option value="BSB">BSB</option><option value="CHSB">CHSB</option><option value="Mashq">Mashq</option></select>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group"><label>Fan</label>
+          <select id="test-subject">
+            <option>Matematika</option><option>Ona tili</option><option>Ingliz tili</option><option>Tarix</option>
+            <option>Fizika</option><option>Kimyo</option><option>Biologiya</option><option>Geografiya</option>
+            <option>Informatika</option><option>Jismoniy tarbiya</option><option>Musiqa</option><option>Texnologiya</option><option>Boshqa</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Sinf</label>
+          <select id="test-class">
+            <option>1-sinf</option><option>2-sinf</option><option>3-sinf</option><option>4-sinf</option>
+            <option>5-sinf</option><option>6-sinf</option><option>7-sinf</option><option>8-sinf</option>
+            <option>9-sinf</option><option>10-sinf</option><option>11-sinf</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Vaqt (daqiqa)</label><input type="number" id="test-time" value="30" min="1" max="180"/></div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group"><label>O'tish bali (%)</label><input type="number" id="test-pass" value="60" min="1" max="100"/></div>
+        <div class="form-group"><label>Test rasmi (ixtiyoriy)</label>
+          <input type="file" id="test-img-file" accept="image/*" onchange="previewTestImg(this)" style="padding:6px"/>
+          <img id="test-img-preview" style="max-height:90px;border-radius:7px;margin-top:5px;display:none"/>
+          <input type="hidden" id="test-img-data"/>
+        </div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-title">❓ Savollar <span style="color:var(--muted);font-size:.74rem;font-weight:400">(har bir savolga ball belgilang)</span></div>
+      <div id="questions-container"></div>
+      <button class="btn btn-outline mt-16" onclick="addQuestion()">+ Savol qo'shish</button>
+    </div>
+    <div style="display:flex;gap:9px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="saveTest()">💾 Saqlash</button>
+      <button class="btn btn-outline" onclick="clearForm()">🗑️ Tozalash</button>
+    </div>
+    <div class="mt-20">
+      <div class="section-title">📋 Barcha testlar</div>
+      <div id="admin-tests-list"></div>
+    </div>
   </div>
 
-  <div class="mt-20">
-    <div class="section-title">📋 Mening testlarim</div>
-    <div id="admin-tests-list"></div>
+  <!-- ADMIN USERS TAB -->
+  <div id="admin-tab-users" style="display:none">
+    <div class="form-section">
+      <div class="form-title">👤 Yangi o'quvchi qo'shish</div>
+      <div class="grid-3">
+        <div class="form-group"><label>To'liq ism *</label><input type="text" id="new-user-name" placeholder="Aziz Karimov"/></div>
+        <div class="form-group"><label>Login *</label><input type="text" id="new-user-login" placeholder="aziz_karimov"/></div>
+        <div class="form-group"><label>Parol *</label><input type="text" id="new-user-pass" placeholder="12345"/></div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group"><label>Sinf</label><input type="text" id="new-user-class" placeholder="9-A"/></div>
+        <div class="form-group"><label>Fan guruh</label>
+          <select id="new-user-group"><option value="">Umumiy</option><option>Matematika</option><option>Ingliz tili</option><option>Tarix</option><option>Fizika</option><option>Kimyo</option><option>Biologiya</option></select>
+        </div>
+      </div>
+      <button class="btn btn-green" onclick="addUser()">➕ Qo'shish</button>
+    </div>
+    <div class="section-title">👥 O'quvchilar ro'yxati (<span id="user-count">0</span> ta)</div>
+    <div id="users-list"></div>
+  </div>
+
+  <!-- ADMIN RESULTS TAB -->
+  <div id="admin-tab-results" style="display:none">
+    <div class="section-title">📊 Barcha natijalar</div>
+    <div style="overflow-x:auto" id="admin-results-wrap"></div>
+    <div id="admin-no-results" style="display:none;text-align:center;padding:40px;color:var(--muted)">Hali natija yo'q</div>
+    <div style="margin-top:12px;display:flex;justify-content:flex-end">
+      <button class="btn btn-red btn-sm" onclick="clearResults()">🗑️ Tozalash</button>
+    </div>
   </div>
 </div>
 
 <script>
+// ===== CONFIG =====
 const ADMIN_PASSWORD = '20maktab2024';
+
+// ===== STATE =====
 let tests = JSON.parse(localStorage.getItem('m20_tests')||'[]');
 let results = JSON.parse(localStorage.getItem('m20_results')||'[]');
+let users = JSON.parse(localStorage.getItem('m20_users')||'[]');
+let platformOpen = localStorage.getItem('m20_platform') !== 'closed';
 let isAdmin = false;
+let currentUser = null;
 let currentTest = null;
 let userAnswers = {};
 let timerInterval = null;
@@ -342,51 +465,182 @@ let startTime = null;
 let timeLeft = 0;
 let qCount = 0;
 
-updateStats(); renderHome(); renderTests(); renderResults();
+// ===== INIT =====
+initApp();
 
 function save(){
   localStorage.setItem('m20_tests',JSON.stringify(tests));
   localStorage.setItem('m20_results',JSON.stringify(results));
+  localStorage.setItem('m20_users',JSON.stringify(users));
+  localStorage.setItem('m20_platform',platformOpen?'open':'closed');
 }
 
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  const map={home:0,tests:1,results:2,info:3,login:4,admin:4};
-  const idx=map[id];
-  if(idx!==undefined) document.querySelectorAll('.nav-tab')[idx]?.classList.add('active');
-  if(id==='tests'){renderTests();updateFilterOptions();}
-  if(id==='results') renderResults();
-  if(id==='home'){updateStats();renderHome();}
+function initApp(){
+  if(!platformOpen){
+    document.getElementById('closed-screen').style.display='block';
+    document.getElementById('main-app').style.display='none';
+    return;
+  }
+  document.getElementById('closed-screen').style.display='none';
+  document.getElementById('main-app').style.display='block';
+  document.getElementById('user-login-screen').style.display='flex';
+  document.getElementById('pages-wrap').style.display='none';
+  document.getElementById('nav-tabs').style.display='none';
+  document.getElementById('logout-btn').style.display='none';
 }
 
+// ===== USER LOGIN =====
+function loginUser(){
+  const login=document.getElementById('user-login-input').value.trim();
+  const pass=document.getElementById('user-pass-input').value.trim();
+  const user=users.find(u=>u.login===login&&u.pass===pass);
+  if(!user){document.getElementById('user-login-error').style.display='block';return;}
+  document.getElementById('user-login-error').style.display='none';
+  currentUser=user;
+  enterApp();
+}
+
+function enterApp(){
+  document.getElementById('user-login-screen').style.display='none';
+  document.getElementById('pages-wrap').style.display='block';
+  document.getElementById('nav-tabs').style.display='flex';
+  document.getElementById('logout-btn').style.display='flex';
+  document.getElementById('nav-user-info').style.display='block';
+  document.getElementById('nav-user-info').innerHTML=`👤 <strong>${currentUser.name}</strong> · ${currentUser.class||''}`;
+  document.getElementById('home-welcome').textContent=`Xush kelibsiz, ${currentUser.name}! 🎉`;
+  updateStats();renderHome();renderTests();renderResults();
+  showPage('home');
+}
+
+function logoutUser(){
+  currentUser=null;
+  document.getElementById('user-login-screen').style.display='flex';
+  document.getElementById('pages-wrap').style.display='none';
+  document.getElementById('nav-tabs').style.display='none';
+  document.getElementById('logout-btn').style.display='none';
+  document.getElementById('nav-user-info').style.display='none';
+  document.getElementById('user-login-input').value='';
+  document.getElementById('user-pass-input').value='';
+  document.getElementById('admin-panel').style.display='none';
+  isAdmin=false;
+}
+
+// ===== ADMIN =====
+function showAdminLogin(){
+  const modal=document.getElementById('admin-login-modal');
+  modal.style.display='flex';
+  setTimeout(()=>document.getElementById('admin-pass').focus(),100);
+}
 function showAdminOrLogin(){
-  if(isAdmin) showPage('admin');
-  else showPage('login');
+  if(isAdmin){showAdminPanel();}
+  else showAdminLogin();
 }
+function closeAdminModal(){document.getElementById('admin-login-modal').style.display='none';}
 
 function checkAdmin(){
-  const pass=document.getElementById('admin-pass').value;
-  if(pass===ADMIN_PASSWORD){
+  if(document.getElementById('admin-pass').value===ADMIN_PASSWORD){
     isAdmin=true;
     document.getElementById('login-error').style.display='none';
     document.getElementById('admin-pass').value='';
-    if(!document.querySelectorAll('.question-block').length){addQuestion();addQuestion();addQuestion();}
-    renderAdminTests();
-    showPage('admin');
+    closeAdminModal();
+    showAdminPanel();
   } else {
     document.getElementById('login-error').style.display='block';
   }
 }
 
-function logout(){isAdmin=false;showPage('home');}
+function showAdminPanel(){
+  document.getElementById('user-login-screen').style.display='none';
+  document.getElementById('pages-wrap').style.display='none';
+  document.getElementById('nav-tabs').style.display='none';
+  document.getElementById('admin-nav-btn').style.display='flex';
+  document.getElementById('logout-btn').style.display='none';
+  document.getElementById('admin-panel').style.display='block';
+  document.getElementById('platform-toggle').checked=platformOpen;
+  updateToggleUI(platformOpen);
+  if(!document.querySelectorAll('.question-block').length){addQuestion();addQuestion();addQuestion();}
+  renderAdminTests();renderAdminUsers();renderAdminResults();
+  showAdminTab('tests');
+}
 
+function logoutAdmin(){
+  isAdmin=false;
+  document.getElementById('admin-panel').style.display='none';
+  document.getElementById('admin-nav-btn').style.display='none';
+  if(currentUser){
+    document.getElementById('pages-wrap').style.display='block';
+    document.getElementById('nav-tabs').style.display='flex';
+    document.getElementById('logout-btn').style.display='flex';
+  } else {
+    initApp();
+  }
+}
+
+// ===== PLATFORM TOGGLE =====
+function togglePlatform(open){
+  platformOpen=open;
+  save();
+  updateToggleUI(open);
+}
+
+function updateToggleUI(open){
+  document.getElementById('toggle-label').innerHTML=open?`<span class="online-dot"></span>Platforma faol`:`🔒 Platforma yopiq`;
+  document.getElementById('toggle-desc').textContent=open?`O'quvchilar kirishi va test ishlashi mumkin`:`Platforma yopiq — hech kim kira olmaydi`;
+}
+
+function showAdminTab(tab){
+  ['tests','users','results'].forEach(t=>document.getElementById('admin-tab-'+t).style.display=t===tab?'block':'none');
+  if(tab==='results') renderAdminResults();
+  if(tab==='users') renderAdminUsers();
+}
+
+// ===== USERS =====
+function addUser(){
+  const name=document.getElementById('new-user-name').value.trim();
+  const login=document.getElementById('new-user-login').value.trim();
+  const pass=document.getElementById('new-user-pass').value.trim();
+  const cls=document.getElementById('new-user-class').value.trim();
+  const group=document.getElementById('new-user-group').value;
+  if(!name||!login||!pass){alert('Ism, login va parol majburiy!');return;}
+  if(users.find(u=>u.login===login)){alert('Bu login allaqachon mavjud!');return;}
+  users.push({id:'u_'+Date.now(),name,login,pass,class:cls,group});
+  save();
+  document.getElementById('new-user-name').value='';
+  document.getElementById('new-user-login').value='';
+  document.getElementById('new-user-pass').value='';
+  document.getElementById('new-user-class').value='';
+  renderAdminUsers();
+}
+
+function deleteUser(id){
+  if(!confirm('O\'quvchini o\'chirishni tasdiqlaysizmi?'))return;
+  users=users.filter(u=>u.id!==id);
+  save();renderAdminUsers();
+}
+
+function renderAdminUsers(){
+  const el=document.getElementById('users-list');
+  document.getElementById('user-count').textContent=users.length;
+  if(!users.length){el.innerHTML='<p class="text-muted">Hali o\'quvchi qo\'shilmagan</p>';return;}
+  el.innerHTML=users.map(u=>`
+    <div class="user-row">
+      <div class="user-info">
+        <div class="user-name">👤 ${u.name}</div>
+        <div class="user-meta">Login: <strong>${u.login}</strong> · Parol: <strong>${u.pass}</strong> · ${u.class||'Sinf yo\'q'}${u.group?' · '+u.group:''}</div>
+      </div>
+      <div class="user-actions">
+        <button onclick="deleteUser('${u.id}')" class="btn btn-red btn-xs">🗑️</button>
+      </div>
+    </div>`).join('');
+}
+
+// ===== STATS =====
 function updateStats(){
   document.getElementById('stat-tests').textContent=tests.length;
-  document.getElementById('stat-attempts').textContent=results.length;
-  if(results.length){
-    const avg=Math.round(results.reduce((s,r)=>s+r.scorePct,0)/results.length);
+  const myResults=currentUser?results.filter(r=>r.userId===currentUser.id):results;
+  document.getElementById('stat-attempts').textContent=myResults.length;
+  if(myResults.length){
+    const avg=Math.round(myResults.reduce((s,r)=>s+r.scorePct,0)/myResults.length);
     document.getElementById('stat-avg').textContent=avg+'%';
   }
 }
@@ -403,7 +657,7 @@ function testCardHTML(t){
   const typeColor=t.type==='CHSB'?'badge-red':t.type==='BSB'?'badge-blue':'badge-green';
   return `<div class="test-card" onclick="openTest('${t.id}')">
     ${t.imgData?`<img src="${t.imgData}" class="test-card-img" alt=""/>`:''}
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
       <div class="test-card-subject">${t.subject} · ${t.class}</div>
       <span class="badge ${typeColor}">${t.type}</span>
     </div>
@@ -427,6 +681,7 @@ function updateFilterOptions(){
 function renderTests(){
   const grid=document.getElementById('tests-grid');
   const none=document.getElementById('no-tests');
+  updateFilterOptions();
   const subj=document.getElementById('filter-subject')?.value||'';
   const type=document.getElementById('filter-type')?.value||'';
   let filtered=tests.filter(t=>(!subj||t.subject===subj)&&(!type||t.type===type)).reverse();
@@ -435,7 +690,7 @@ function renderTests(){
   grid.innerHTML=filtered.map(t=>testCardHTML(t)).join('');
 }
 
-// ADMIN FORM
+// ===== ADMIN TEST FORM =====
 function previewTestImg(input){
   const file=input.files[0];if(!file)return;
   const r=new FileReader();
@@ -443,8 +698,7 @@ function previewTestImg(input){
     document.getElementById('test-img-preview').src=e.target.result;
     document.getElementById('test-img-preview').style.display='block';
     document.getElementById('test-img-data').value=e.target.result;
-  };
-  r.readAsDataURL(file);
+  };r.readAsDataURL(file);
 }
 
 function addQuestion(){
@@ -455,13 +709,13 @@ function addQuestion(){
   div.className='question-block';div.id=id;
   div.innerHTML=`
     <div class="question-header">
-      <div style="display:flex;align-items:center;gap:10px">
+      <div style="display:flex;align-items:center;gap:9px">
         <div class="question-num">Savol ${num}</div>
         <span class="q-ball-badge">Ball: <span class="ball-show">1</span></span>
       </div>
-      <button onclick="removeQuestion('${id}')" style="background:var(--red);color:#fff;border:none;border-radius:7px;padding:4px 10px;cursor:pointer;font-size:.75rem">✕</button>
+      <button onclick="removeQuestion('${id}')" style="background:var(--red);color:#fff;border:none;border-radius:6px;padding:4px 9px;cursor:pointer;font-size:.72rem">✕</button>
     </div>
-    <div class="grid-2" style="margin-bottom:10px">
+    <div class="grid-2" style="margin-bottom:9px">
       <div class="form-group" style="margin:0">
         <label>Savol matni *</label>
         <input type="text" placeholder="Savol matni..." class="q-text-input"/>
@@ -480,10 +734,10 @@ function addQuestion(){
     <div class="options-list">
       ${['A','B','C','D'].map((l,i)=>`
         <div class="option-row">
-          <span style="color:var(--accent);font-weight:800;width:16px;flex-shrink:0">${l}</span>
+          <span style="color:var(--accent);font-weight:800;width:14px;flex-shrink:0">${l}</span>
           <input type="text" placeholder="${l} variant..." class="opt-input" data-opt="${i}"/>
           <input type="file" accept="image/*" class="opt-img-file" data-opt="${i}" onchange="previewOptImg(this,'${id}',${i})" style="display:none"/>
-          <button class="option-img-btn" onclick="document.querySelectorAll('#${id} .opt-img-file')[${i}].click()" title="Rasm qo'shish">🖼</button>
+          <button class="option-img-btn" onclick="document.querySelectorAll('#${id} .opt-img-file')[${i}].click()" title="Rasm">🖼</button>
           <img class="opt-img-preview" id="optimg-${id}-${i}"/>
           <input type="hidden" class="opt-img-data" data-opt="${i}"/>
           <input type="radio" name="correct-${id}" class="correct-radio" value="${i}" title="To'g'ri javob"/>
@@ -497,32 +751,19 @@ function addQuestion(){
 function previewQImg(input,id){
   const file=input.files[0];if(!file)return;
   const r=new FileReader();
-  r.onload=e=>{
-    const img=document.getElementById('qimg-'+id);
-    img.src=e.target.result;img.style.display='block';
-    input.closest('.question-block').querySelector('.q-img-data').value=e.target.result;
-  };
+  r.onload=e=>{const img=document.getElementById('qimg-'+id);img.src=e.target.result;img.style.display='block';input.closest('.question-block').querySelector('.q-img-data').value=e.target.result;};
   r.readAsDataURL(file);
 }
 
 function previewOptImg(input,qid,oi){
   const file=input.files[0];if(!file)return;
   const r=new FileReader();
-  r.onload=e=>{
-    const img=document.getElementById(`optimg-${qid}-${oi}`);
-    img.src=e.target.result;img.style.display='block';
-    input.closest('.question-block').querySelectorAll('.opt-img-data')[oi].value=e.target.result;
-  };
+  r.onload=e=>{const img=document.getElementById(`optimg-${qid}-${oi}`);img.src=e.target.result;img.style.display='block';input.closest('.question-block').querySelectorAll('.opt-img-data')[oi].value=e.target.result;};
   r.readAsDataURL(file);
 }
 
 function removeQuestion(id){document.getElementById(id)?.remove();renumberQuestions();}
-
-function renumberQuestions(){
-  document.querySelectorAll('.question-block').forEach((b,i)=>{
-    b.querySelector('.question-num').textContent=`Savol ${i+1}`;
-  });
-}
+function renumberQuestions(){document.querySelectorAll('.question-block').forEach((b,i)=>{b.querySelector('.question-num').textContent=`Savol ${i+1}`;});}
 
 function saveTest(){
   const title=document.getElementById('test-title').value.trim();
@@ -537,85 +778,56 @@ function saveTest(){
     const correct=b.querySelector('.correct-radio:checked');
     const qImgData=b.querySelector('.q-img-data')?.value||'';
     const ball=parseInt(b.querySelector('.q-ball-input')?.value)||1;
-    if(!text||opts.some(o=>!o)||!correct){
-      alert(`Savol ${i+1}: barcha maydonlarni to'ldiring va to'g'ri javobni belgilang!`);
-      valid=false;
-    } else {
-      questions.push({text,options:opts,optImgs,correct:parseInt(correct.value),imgData:qImgData,ball});
-    }
+    if(!text||opts.some(o=>!o)||!correct){alert(`Savol ${i+1}: barcha maydonlarni to'ldiring!`);valid=false;}
+    else questions.push({text,options:opts,optImgs,correct:parseInt(correct.value),imgData:qImgData,ball});
   });
   if(!valid)return;
-  const test={
-    id:'t_'+Date.now(),title,
-    type:document.getElementById('test-type').value,
-    subject:document.getElementById('test-subject').value,
-    class:document.getElementById('test-class').value,
-    time:parseInt(document.getElementById('test-time').value),
-    pass:parseInt(document.getElementById('test-pass').value),
-    imgData:document.getElementById('test-img-data').value,
-    questions,created:new Date().toLocaleDateString('uz-UZ')
-  };
-  tests.push(test);save();
-  alert('✅ Test saqlandi!');
-  clearForm();renderAdminTests();updateStats();renderHome();
+  tests.push({id:'t_'+Date.now(),title,type:document.getElementById('test-type').value,subject:document.getElementById('test-subject').value,class:document.getElementById('test-class').value,time:parseInt(document.getElementById('test-time').value),pass:parseInt(document.getElementById('test-pass').value),imgData:document.getElementById('test-img-data').value,questions,created:new Date().toLocaleDateString('uz-UZ')});
+  save();alert('✅ Test saqlandi!');clearForm();renderAdminTests();updateStats();renderHome();
 }
 
 function clearForm(){
-  document.getElementById('test-title').value='';
-  document.getElementById('test-time').value='30';
-  document.getElementById('test-pass').value='60';
-  document.getElementById('test-img-data').value='';
-  document.getElementById('test-img-preview').style.display='none';
-  document.getElementById('questions-container').innerHTML='';
-  qCount=0;
-  addQuestion();addQuestion();addQuestion();
+  document.getElementById('test-title').value='';document.getElementById('test-time').value='30';document.getElementById('test-pass').value='60';document.getElementById('test-img-data').value='';document.getElementById('test-img-preview').style.display='none';
+  document.getElementById('questions-container').innerHTML='';qCount=0;addQuestion();addQuestion();addQuestion();
 }
 
 function renderAdminTests(){
   const el=document.getElementById('admin-tests-list');
   if(!tests.length){el.innerHTML='<p class="text-muted">Hali test yaratilmagan</p>';return;}
   el.innerHTML=[...tests].reverse().map(t=>{
-    const maxBall=t.questions.reduce((s,q)=>s+(q.ball||1),0);
-    return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-      <div>
-        <div style="font-weight:700">${t.title}</div>
-        <div class="text-muted">${t.subject} · ${t.class} · ${t.questions.length} savol · ${maxBall} ball · ${t.type}</div>
-      </div>
-      <button onclick="deleteTest('${t.id}')" class="btn btn-red btn-sm">🗑️</button>
+    const mb=t.questions.reduce((s,q)=>s+(q.ball||1),0);
+    return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:7px">
+      <div><div style="font-weight:700">${t.title}</div><div class="text-muted">${t.subject} · ${t.class} · ${t.questions.length} savol · ${mb} ball · ${t.type}</div></div>
+      <button onclick="deleteTest('${t.id}')" class="btn btn-red btn-xs">🗑️</button>
     </div>`;
   }).join('');
 }
 
 function deleteTest(id){
   if(!confirm('Testni o\'chirishni tasdiqlaysizmi?'))return;
-  tests=tests.filter(t=>t.id!==id);
-  save();renderAdminTests();renderTests();updateStats();renderHome();
+  tests=tests.filter(t=>t.id!==id);save();renderAdminTests();renderTests();updateStats();renderHome();
 }
 
-// TAKE TEST
+// ===== TAKE TEST =====
 function openTest(id){
   currentTest=tests.find(t=>t.id===id);if(!currentTest)return;
-  userAnswers={};
-  if(timerInterval)clearInterval(timerInterval);
+  userAnswers={};if(timerInterval)clearInterval(timerInterval);
   const maxBall=currentTest.questions.reduce((s,q)=>s+(q.ball||1),0);
   document.getElementById('take-title').textContent=currentTest.title;
   document.getElementById('take-meta').textContent=`${currentTest.subject} · ${currentTest.class} · ${currentTest.questions.length} savol · ${currentTest.time} daqiqa · ${currentTest.type}`;
   document.getElementById('take-total-ball').textContent=`Maksimal: ${maxBall} ball`;
   document.getElementById('take-progress').style.width='0%';
-  document.getElementById('take-name-section').style.display='block';
+  document.getElementById('take-start-section').style.display='block';
   document.getElementById('take-questions').style.display='none';
   document.getElementById('take-nav').style.display='none';
-  document.getElementById('student-name').value='';
-  document.getElementById('student-class').value='';
+  document.getElementById('take-student-name-show').textContent=currentUser?`${currentUser.name}${currentUser.class?' · '+currentUser.class:''}`:'';
   document.getElementById('timer-display').textContent=formatTime(currentTest.time*60);
   document.getElementById('timer-display').className='timer';
   showPage('take');
 }
 
 function startTest(){
-  const name=document.getElementById('student-name').value.trim();
-  if(!name){alert('Ismingizni kiriting!');return;}
-  document.getElementById('take-name-section').style.display='none';
+  document.getElementById('take-start-section').style.display='none';
   document.getElementById('take-questions').style.display='block';
   document.getElementById('take-nav').style.display='flex';
   renderTakeQuestions();
@@ -624,8 +836,7 @@ function startTest(){
     timeLeft--;
     document.getElementById('timer-display').textContent=formatTime(timeLeft);
     const el=document.getElementById('timer-display');
-    if(timeLeft<=60)el.className='timer danger';
-    else if(timeLeft<=currentTest.time*60*0.25)el.className='timer warning';
+    if(timeLeft<=60)el.className='timer danger';else if(timeLeft<=currentTest.time*60*0.25)el.className='timer warning';
     if(timeLeft<=0){clearInterval(timerInterval);finishTest();}
   },1000);
 }
@@ -652,53 +863,31 @@ function renderTakeQuestions(){
 
 function selectAnswer(qi,oi){
   userAnswers[qi]=oi;
-  currentTest.questions[qi].options.forEach((_,i)=>{
-    document.getElementById(`opt-${qi}-${i}`).className='answer-btn'+(i===oi?' selected':'');
-  });
+  currentTest.questions[qi].options.forEach((_,i)=>{document.getElementById(`opt-${qi}-${i}`).className='answer-btn'+(i===oi?' selected':'');});
   updateProgress();
 }
 
 function updateProgress(){
-  const pct=(Object.keys(userAnswers).length/currentTest.questions.length)*100;
-  document.getElementById('take-progress').style.width=pct+'%';
+  document.getElementById('take-progress').style.width=((Object.keys(userAnswers).length/currentTest.questions.length)*100)+'%';
 }
 
 function finishTest(){
   if(timerInterval)clearInterval(timerInterval);
   const elapsed=Math.round((Date.now()-startTime)/1000);
-  const name=document.getElementById('student-name').value.trim()||"Noma'lum";
-  const cls=document.getElementById('student-class').value.trim()||'';
   let earnedBall=0;let correct=0;
   const maxBall=currentTest.questions.reduce((s,q)=>s+(q.ball||1),0);
-  currentTest.questions.forEach((q,i)=>{
-    if(userAnswers[i]===q.correct){correct++;earnedBall+=(q.ball||1);}
-  });
+  currentTest.questions.forEach((q,i)=>{if(userAnswers[i]===q.correct){correct++;earnedBall+=(q.ball||1);}});
   const scorePct=Math.round((earnedBall/maxBall)*100);
   const passed=scorePct>=currentTest.pass;
-  let grade='';
-  if(scorePct>=86)grade="5 (A'lo) ⭐";
-  else if(scorePct>=66)grade='4 (Yaxshi) 👍';
-  else if(scorePct>=30)grade='3 (Qoniqarli) 📚';
-  else grade='2 (Qoniqarsiz) ❌';
-
-  const result={
-    id:'r_'+Date.now(),testId:currentTest.id,testTitle:currentTest.title,
-    subject:currentTest.subject,type:currentTest.type,
-    studentName:name,studentClass:cls,
-    scorePct,earnedBall,maxBall,correct,
-    wrong:currentTest.questions.length-correct,
-    total:currentTest.questions.length,
-    time:elapsed,passed,grade,
-    date:new Date().toLocaleString('uz-UZ')
-  };
+  let grade=scorePct>=86?"5 (A'lo) ⭐":scorePct>=66?'4 (Yaxshi) 👍':scorePct>=30?'3 (Qoniqarli) 📚':'2 (Qoniqarsiz) ❌';
+  const result={id:'r_'+Date.now(),testId:currentTest.id,testTitle:currentTest.title,subject:currentTest.subject,type:currentTest.type,userId:currentUser?.id,studentName:currentUser?.name||'Noma\'lum',studentClass:currentUser?.class||'',scorePct,earnedBall,maxBall,correct,wrong:currentTest.questions.length-correct,total:currentTest.questions.length,time:elapsed,passed,grade,date:new Date().toLocaleString('uz-UZ')};
   results.push(result);save();renderResults();updateStats();
   showResultPage(result);
 }
 
 function showResultPage(r){
-  const circle=document.getElementById('result-circle');
   const color=r.scorePct>=86?'var(--green)':r.scorePct>=66?'#60a5fa':r.scorePct>=30?'var(--yellow)':'var(--red)';
-  circle.style.borderColor=color;
+  document.getElementById('result-circle').style.borderColor=color;
   document.getElementById('result-score-pct').textContent=r.scorePct+'%';
   document.getElementById('result-score-pct').style.color=color;
   document.getElementById('result-status').textContent=r.passed?'🎉 O\'tdingiz!':'😔 O\'tolmadingiz';
@@ -714,30 +903,54 @@ function showResultPage(r){
 function renderResults(){
   const wrap=document.getElementById('results-table-wrap');
   const none=document.getElementById('no-results');
-  if(!results.length){wrap.innerHTML='';none.style.display='block';return;}
+  const myResults=currentUser?results.filter(r=>r.userId===currentUser.id):results;
+  if(!myResults.length){wrap.innerHTML='';none.style.display='block';return;}
   none.style.display='none';
-  wrap.innerHTML=`<table>
-    <thead><tr><th>O'quvchi</th><th>Sinf</th><th>Test</th><th>Tur</th><th>Ball</th><th>%</th><th>Baho</th><th>Holat</th><th>Sana</th></tr></thead>
-    <tbody>${[...results].reverse().map(r=>`<tr>
-      <td style="font-weight:700">${r.studentName}</td>
-      <td>${r.studentClass||'—'}</td>
-      <td style="color:var(--muted);font-size:.8rem">${r.testTitle}</td>
+  wrap.innerHTML=`<table><thead><tr><th>Test</th><th>Tur</th><th>Ball</th><th>%</th><th>Baho</th><th>Holat</th><th>Sana</th></tr></thead><tbody>
+    ${[...myResults].reverse().map(r=>`<tr>
+      <td style="font-weight:700">${r.testTitle}</td>
       <td><span class="badge ${r.type==='CHSB'?'badge-red':'badge-blue'}">${r.type||'—'}</span></td>
       <td style="font-weight:700;color:var(--accent)">${r.earnedBall||r.correct}/${r.maxBall||r.total}</td>
       <td style="font-family:'Unbounded',sans-serif;font-weight:700;color:${r.scorePct>=86?'var(--green)':r.scorePct>=66?'#60a5fa':r.scorePct>=30?'var(--yellow)':'var(--red)'}">${r.scorePct}%</td>
-      <td style="font-size:.82rem">${r.grade||'—'}</td>
+      <td style="font-size:.8rem">${r.grade||'—'}</td>
       <td><span class="badge ${r.passed?'badge-green':'badge-red'}">${r.passed?'O\'tdi':'O\'tolmadi'}</span></td>
-      <td style="color:var(--muted);font-size:.75rem">${r.date}</td>
-    </tr>`).join('')}</tbody>
-  </table>
-  <div style="margin-top:12px;display:flex;justify-content:flex-end">
-    <button class="btn btn-red btn-sm" onclick="clearResults()">🗑️ Natijalarni tozalash</button>
-  </div>`;
+      <td style="color:var(--muted);font-size:.73rem">${r.date}</td>
+    </tr>`).join('')}</tbody></table>`;
+}
+
+function renderAdminResults(){
+  const wrap=document.getElementById('admin-results-wrap');
+  const none=document.getElementById('admin-no-results');
+  if(!results.length){wrap.innerHTML='';none.style.display='block';return;}
+  none.style.display='none';
+  wrap.innerHTML=`<table><thead><tr><th>O'quvchi</th><th>Sinf</th><th>Test</th><th>Tur</th><th>Ball</th><th>%</th><th>Baho</th><th>Holat</th><th>Sana</th></tr></thead><tbody>
+    ${[...results].reverse().map(r=>`<tr>
+      <td style="font-weight:700">${r.studentName}</td>
+      <td>${r.studentClass||'—'}</td>
+      <td style="color:var(--muted);font-size:.78rem">${r.testTitle}</td>
+      <td><span class="badge ${r.type==='CHSB'?'badge-red':'badge-blue'}">${r.type||'—'}</span></td>
+      <td style="font-weight:700;color:var(--accent)">${r.earnedBall||r.correct}/${r.maxBall||r.total}</td>
+      <td style="font-family:'Unbounded',sans-serif;font-weight:700;color:${r.scorePct>=86?'var(--green)':r.scorePct>=66?'#60a5fa':r.scorePct>=30?'var(--yellow)':'var(--red)'}">${r.scorePct}%</td>
+      <td style="font-size:.78rem">${r.grade||'—'}</td>
+      <td><span class="badge ${r.passed?'badge-green':'badge-red'}">${r.passed?'O\'tdi':'O\'tolmadi'}</span></td>
+      <td style="color:var(--muted);font-size:.72rem">${r.date}</td>
+    </tr>`).join('')}</tbody></table>`;
 }
 
 function clearResults(){
   if(!confirm('Barcha natijalarni o\'chirishni tasdiqlaysizmi?'))return;
-  results=[];save();renderResults();updateStats();
+  results=[];save();renderAdminResults();renderResults();updateStats();
+}
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+id)?.classList.add('active');
+  const map={home:0,tests:1,results:2,info:3};
+  const idx=map[id];
+  if(idx!==undefined) document.querySelectorAll('#nav-tabs .nav-tab')[idx]?.classList.add('active');
+  if(id==='tests'){renderTests();}
+  if(id==='results') renderResults();
 }
 </script>
 </body>
